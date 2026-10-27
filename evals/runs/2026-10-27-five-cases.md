@@ -1,6 +1,6 @@
 # 2026-10-27 five-case pass
 
-One paired pass of five `judgment` prompts, run after the correctness and code-review instructions were already in `SKILL.md` and `references/code.md`. This is a different pass from `2026-10-27-notes.md`, which used the earlier instructions and all ten prompts. Each condition here was run once. That is not a repeated result, and it is not statistical significance.
+One paired pass of five `judgment` prompts, run after the correctness and code-review instructions were already in `SKILL.md` and `references/code.md`. This is a different pass from `2026-10-27-notes.md`, which used the earlier instructions and all ten prompts. Each condition here was run once. That is not a repeated result, and it is not statistical significance. The `examples` suite, and the later get-user assertion about not confirming a behavior the function does not show, were not part of this grade.
 
 - Date: October 27, 2026.
 - Model: Grok 4.7, inherited by the session that ran the pair.

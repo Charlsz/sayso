@@ -485,7 +485,8 @@
         "The review says id is interpolated into the URL without encoding, so characters such as /, ?, or # can change the request, with the cache key still the raw id.",
         "The review says two overlapping calls for the same id can both miss the cache before either write, so both call fetch. Missing this fails the check, even if the other two bugs are present.",
         "Each reported bug has an impact and a fix aimed at that bug, rather than only a rewritten function with no explanation.",
-        "The review does not spend itself on stylistic preferences such as naming or formatting."
+        "The review does not spend itself on stylistic preferences such as naming or formatting.",
+        "If the review mentions a behavior the function does not show, such as the body varying by viewer, it is marked as not shown rather than stated as a confirmed bug."
       ]
     },
     {
@@ -543,6 +544,615 @@
         "It still says the difference mask identifies candidate areas of newly detected water.",
         "It still says accuracy depends on image quality, temporal alignment between the imagery and the reference layer, and the reliability of the segmentation model.",
         "It does not add a measured accuracy, a dataset, or a cause the paragraph did not state."
+      ]
+    },
+    {
+      "id": 19,
+      "slug": "editor-tools-rewrite",
+      "suite": "examples",
+      "category": "naturalness",
+      "covers": ["naturalness", "unsupported_claims"],
+      "dimensions": ["voice", "correctness", "restraint"],
+      "prompt": "Rewrite this so a teammate can use the point. Keep both ideas. Do not add a claim the paragraph does not make.\n\nAutomated review now shows up inside many editors. It is worth noting that a team should look at what the tool flags and what it never sees.",
+      "expected_output": "A direct restatement that automated review is inside many editors, and that a team still has to look at what it flags and what it never sees. No new claim, and no replacement cliché.",
+      "constraints": [
+        "Keep both ideas: where the tool shows up, and the gap between what it flags and what it never sees.",
+        "Do not add a product, a measurement, or a moral the paragraph does not contain."
+      ],
+      "failure_modes": [
+        "Replaces the filler with a different cliché, such as a fast-paced world, revolutionizing, or at the end of the day.",
+        "Drops either the editors or the unseen cases.",
+        "Adds a statistic, a product name, or a recommendation the paragraph does not make."
+      ],
+      "assertions": [
+        "The rewrite still says automated review shows up in editors.",
+        "The rewrite still distinguishes what the tool flags from what it never sees.",
+        "The rewrite does not use a stock frame such as 'in today's fast-paced world', 'at the end of the day', or 'revolutionizing'.",
+        "The rewrite does not add a number, product, or recommendation the source did not state."
+      ],
+      "checks": [
+        {"op": "includes", "text": "editor"},
+        {"op": "one_of", "options": ["flag", "catch"]},
+        {"op": "one_of", "options": ["never see", "never sees", "does not see", "doesn't see"]},
+        {"op": "excludes", "text": "fast-paced"},
+        {"op": "excludes", "text": "at the end of the day"},
+        {"op": "excludes", "text": "revolution"},
+        {"op": "excludes", "text": "worth noting"}
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "prototype-update",
+      "suite": "examples",
+      "category": "leave-unchanged",
+      "covers": ["leave_unchanged", "voice"],
+      "dimensions": ["intervention", "voice", "restraint"],
+      "prompt": "make this sound more natural only if it needs it. otherwise leave it:\n\nthe prototype works, but the interface still needs some work",
+      "expected_output": "The same lowercase note. It is already clear, and the task does not ask for a new tone.",
+      "constraints": [
+        "Change the note only if it needs a change to be understood.",
+        "Do not impose a formal register."
+      ],
+      "failure_modes": [
+        "Rewrites it into formal prose such as 'functional' and 'further refinement'.",
+        "Capitalizes it into a status report.",
+        "Adds a cause or a next step."
+      ],
+      "assertions": [
+        "The output contains the original lowercase sentence.",
+        "The output does not replace 'prototype works' with 'functional' or 'interface' with 'user interface requires'.",
+        "The output does not add a cause, an owner, or a next step."
+      ],
+      "checks": [
+        {"op": "contains_exact", "text": "the prototype works, but the interface still needs some work"},
+        {"op": "max_added_chars", "anchor": "the prototype works, but the interface still needs some work", "n": 40},
+        {"op": "excludes", "text": "refinement"},
+        {"op": "excludes", "text": "functional"}
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "lab-meeting-email",
+      "suite": "examples",
+      "category": "professional-email",
+      "covers": ["professional_academic", "explicit_instruction"],
+      "dimensions": ["voice", "task_completion", "intervention"],
+      "prompt": "Make this easier to read. It is an email to my professor, so keep it professional.\n\nDear Professor,\n\nI am writing to inform you that I will be unable to attend tomorrow's lab meeting due to a scheduling conflict with my research group. I have finished the lab report and submitted it before the deadline.",
+      "expected_output": "A shorter professional email that still says the sender will miss tomorrow's lab meeting because of the research group, and that the lab report was finished and submitted before the deadline. No invented apology.",
+      "constraints": [
+        "The audience is a professor.",
+        "Keep the conflict, the lab meeting, and the submitted report.",
+        "Do not invent an apology, a promise, or a request."
+      ],
+      "failure_modes": [
+        "Turns the letter into a lowercase text.",
+        "Drops the research-group conflict or the submitted report.",
+        "Adds an apology or a request the draft did not make."
+      ],
+      "assertions": [
+        "The email stays professionally capitalized and is not written as a text.",
+        "The email says the sender cannot attend tomorrow's lab meeting because of a conflict with the research group.",
+        "The email says the lab report was finished and submitted before the deadline.",
+        "The email does not add an apology or a new request."
+      ],
+      "checks": [
+        {"op": "includes_exact", "text": "Professor"},
+        {"op": "includes", "text": "lab meeting"},
+        {"op": "includes", "text": "research group"},
+        {"op": "one_of", "options": ["submitted", "finished the lab report", "lab report"]},
+        {"op": "excludes", "text": "hey professor"},
+        {"op": "excludes", "text": "!"}
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "precision-plain",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": ["technical_accuracy", "concision"],
+      "dimensions": ["correctness", "task_completion", "restraint"],
+      "prompt": "Explain this to a student in two or three sentences. Keep the definitions.\n\nPrecision measures the proportion of positive predictions that are correct, while recall measures the proportion of actual positive cases that the model identifies.",
+      "expected_output": "Two or three sentences a student can read. Precision is still about the positive predictions that were correct. Recall is still about the actual positive cases the model found. Neither term is reduced to overall accuracy.",
+      "constraints": [
+        "Keep both definitions.",
+        "Stay within two or three sentences."
+      ],
+      "failure_modes": [
+        "Calls precision 'how accurate a model is'.",
+        "Calls recall only 'how much it finds' without saying finds of the actual positives.",
+        "Drops one of the two terms.",
+        "Turns the explanation into a lecture with formulas the prompt did not ask for, or invents a dataset."
+      ],
+      "assertions": [
+        "Precision is described as the correctness of the positive predictions, flagged items, or predicted positives.",
+        "Recall is described as the share of actual or real positive cases the model identifies.",
+        "The answer does not define precision as the model's overall accuracy.",
+        "The answer does not invent a dataset, a threshold, or a measured score."
+      ],
+      "checks": [
+        {"op": "one_of", "options": ["positive prediction", "positive predictions", "flagged", "predicted positive"]},
+        {"op": "one_of", "options": ["actual positive", "real positive", "true positive"]},
+        {"op": "excludes", "text": "how accurate a model is"},
+        {"op": "excludes", "text": "how accurate the model is"}
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "flood-cloud",
+      "suite": "examples",
+      "category": "scientific-editing",
+      "covers": ["scientific_uncertainty", "unsupported_claims"],
+      "dimensions": ["correctness", "intervention", "restraint"],
+      "prompt": "Edit this for a methods note. Keep the limit.\n\nThe model detected a larger flooded area in the post-event image. However, cloud cover limited visibility in part of the scene, so the estimate may underrepresent the actual extent.",
+      "expected_output": "A methods note that still says the model detected a larger flooded area, and that cloud cover may have caused the estimate to underrepresent the actual extent.",
+      "constraints": [
+        "Keep the detected increase and the cloud-cover limit.",
+        "Do not upgrade the estimate into a confirmed extent."
+      ],
+      "failure_modes": [
+        "Says the model confirmed the full extent or mapped the flood successfully without the limit.",
+        "Drops cloud cover.",
+        "Invents a measured area, a satellite, or a cause for the flood."
+      ],
+      "assertions": [
+        "The note says the model detected a larger flooded area, or an increase in flooded area.",
+        "The note keeps cloud cover as a limit on visibility.",
+        "The note keeps the possibility that the estimate underrepresents the actual extent.",
+        "The note does not say the full extent was confirmed.",
+        "The note does not add a measurement or a satellite name."
+      ],
+      "checks": [
+        {"op": "includes", "text": "flood"},
+        {"op": "includes", "text": "cloud"},
+        {"op": "one_of", "options": ["underrepresent", "under-represent", "less than the actual", "not the full"]},
+        {"op": "excludes", "text": "full extent"},
+        {"op": "excludes", "text": "confirmed"}
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "cache-before-status",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": ["technical_accuracy", "concision"],
+      "dimensions": ["correctness", "task_completion", "restraint"],
+      "prompt": "Rewrite this so an engineer can act on it. Keep it to one or two sentences.\n\nA request can fail with an HTTP error, and caching the response before checking its status may cause later calls to reuse a failed result.",
+      "expected_output": "One or two sentences that say to check the HTTP status before caching, because a failed response can otherwise be stored and reused.",
+      "constraints": [
+        "Keep the failure mode: an error response cached before the status check, then reused.",
+        "Stay within one or two sentences."
+      ],
+      "failure_modes": [
+        "Collapses the mechanism into 'handle errors properly'.",
+        "Drops either the status check or the later reuse.",
+        "Invents a status code, a cache API, or a retry policy."
+      ],
+      "assertions": [
+        "The answer says the HTTP status has to be checked before the response is cached.",
+        "The answer says a failed response can otherwise be stored and reused by a later call.",
+        "The answer does not replace that mechanism with a vague instruction to handle errors.",
+        "The answer does not invent a status code or a retry policy."
+      ],
+      "checks": [
+        {"op": "includes", "text": "status"},
+        {"op": "includes", "text": "cach"},
+        {"op": "includes", "text": "before"},
+        {"op": "one_of", "options": ["reuse", "reused", "later call", "later calls"]},
+        {"op": "excludes", "text": "handled properly"},
+        {"op": "excludes", "text": "handle errors properly"}
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "threshold-sentence",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": ["technical_accuracy", "concision"],
+      "dimensions": ["correctness", "restraint", "task_completion"],
+      "prompt": "In two sentences, what happens to precision and recall if you raise the decision threshold for the positive class? Do not state a tendency as a law.",
+      "expected_output": "Two sentences. Recall of the positive class falls as the threshold rises. If precision is said to rise, the answer also says that rise is not guaranteed.",
+      "constraints": [
+        "Stay within two sentences.",
+        "Do not present the precision tendency as guaranteed."
+      ],
+      "failure_modes": [
+        "Says raising the threshold increases precision, with no exception.",
+        "Omits recall.",
+        "Invents a dataset or a numeric result.",
+        "Turns the answer into an essay."
+      ],
+      "assertions": [
+        "The answer says recall of the positive class falls, or does not rise, as the threshold is raised.",
+        "If the answer says precision rises, it also says this is not guaranteed, not monotonic, or can fail when true positives drop out faster than false positives.",
+        "The answer does not say precision always increases.",
+        "The answer does not invent a dataset or a measured score."
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "formal-on-purpose",
+      "suite": "examples",
+      "category": "professional-email",
+      "covers": ["explicit_instruction", "professional_academic"],
+      "dimensions": ["voice", "task_completion", "intervention"],
+      "prompt": "Turn this into a short email to my advisor. I want it formal.\n\nhey, the draft is done but the figure for section 3 is still wrong. i can send the draft today and fix the figure tomorrow.",
+      "expected_output": "A short formal email that keeps the finished draft, the wrong figure in section 3, sending the draft today, and fixing the figure tomorrow. The user's request for a formal email overrides the lowercase of the note.",
+      "constraints": [
+        "The user asked for a formal email to an advisor.",
+        "Keep all four facts.",
+        "Do not invent a reason the figure is wrong."
+      ],
+      "failure_modes": [
+        "Leaves the note lowercase because the source was casual.",
+        "Drops section 3, today, or tomorrow.",
+        "Invents why the figure is wrong or what the advisor should do."
+      ],
+      "assertions": [
+        "The email is formally capitalized, not a lowercase chat.",
+        "The email says the draft is done, the figure for section 3 is still wrong, the draft can go today, and the figure can be fixed tomorrow.",
+        "The email does not invent a cause for the wrong figure."
+      ],
+      "checks": [
+        {"op": "includes", "text": "section 3"},
+        {"op": "includes", "text": "tomorrow"},
+        {"op": "includes", "text": "today"},
+        {"op": "includes", "text": "figure"},
+        {"op": "one_of_exact", "options": ["The draft", "Dear", "Hello", "Advisor"]},
+        {"op": "excludes", "text": "hey,"},
+        {"op": "excludes", "text": "hey "}
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "ship-build",
+      "suite": "use",
+      "category": "robotic-source",
+      "covers": ["naturalness", "clarity"],
+      "dimensions": ["clarity", "task_completion", "correctness", "intervention"],
+      "prompt": "Rewrite this for the teammate who has to decide whether we can ship today. Keep every fact.\n\nIt is important to note that build 418 has failed. In order to provide visibility, it should be noted that the login test did not pass. The API tests passed. The release cannot proceed until the login test is green.",
+      "expected_output": "A short note a teammate can act on: build 418 failed the login test, the API tests passed, and the release waits on a green login test. No added cause or owner.",
+      "constraints": [
+        "Keep build 418, the failed login test, the passed API tests, and the block on shipping.",
+        "Do not add a cause, an owner, or a new test result."
+      ],
+      "failure_modes": [
+        "Leaves the stock framing in place.",
+        "Drops the API result or the ship block.",
+        "Adds a person, a root cause, or a new build number."
+      ],
+      "assertions": [
+        "The note says build 418 failed and the login test did not pass.",
+        "The note says the API tests passed.",
+        "The note says the release cannot proceed until the login test is green.",
+        "The note does not keep a stock frame such as 'it is important to note' or 'in order to provide visibility'.",
+        "The note does not add a cause or an owner."
+      ],
+      "checks": [
+        {"op": "includes", "text": "418"},
+        {"op": "includes", "text": "login"},
+        {"op": "one_of", "options": ["API tests passed", "API test passed", "API tests did pass"]},
+        {"op": "one_of", "options": ["cannot proceed", "can't proceed", "until the login", "until login", "blocked", "not ship", "do not ship", "don't ship"]},
+        {"op": "excludes", "text": "it is important to note"},
+        {"op": "excludes", "text": "in order to provide visibility"}
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "sam-text",
+      "suite": "use",
+      "category": "leave-unchanged",
+      "covers": ["leave_unchanged", "voice"],
+      "dimensions": ["intervention", "voice", "context_fit"],
+      "prompt": "send this to sam:\n\nrunning late, grab a table if you get there first",
+      "expected_output": "The same text. It already does the job of a message to Sam.",
+      "constraints": [
+        "Sam is the recipient.",
+        "Change the message only if it cannot be sent as written."
+      ],
+      "failure_modes": [
+        "Rewrites it into a full sentence with greeting and sign-off.",
+        "Adds an apology or an arrival time.",
+        "Capitalizes it into a different register."
+      ],
+      "assertions": [
+        "The output contains the original lowercase message.",
+        "The output does not add an apology, an ETA, or a sign-off.",
+        "The output is not rewritten as a formal note."
+      ],
+      "checks": [
+        {"op": "contains_exact", "text": "running late, grab a table if you get there first"},
+        {"op": "max_added_chars", "anchor": "running late, grab a table if you get there first", "n": 24},
+        {"op": "excludes", "text": "sorry"},
+        {"op": "excludes", "text": "Dear"}
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "gasket-email",
+      "suite": "use",
+      "category": "professional-email",
+      "covers": ["professional_academic", "unsupported_claims"],
+      "dimensions": ["context_fit", "task_completion", "correctness", "clarity"],
+      "prompt": "Write to Priya Shah at Northline. I'm Casey. Their Tuesday delivery has to move to Thursday because the gasket arrived damaged. Ask them to confirm Thursday works. Don't offer a discount or an apology tour.",
+      "expected_output": "A normally capitalized email from Casey to Priya Shah. The Tuesday delivery moves to Thursday because the gasket arrived damaged, and it asks Priya to confirm Thursday. No discount.",
+      "constraints": [
+        "Sender is Casey. Recipient is Priya Shah at Northline.",
+        "Old day is Tuesday. New day is Thursday. Reason is a damaged gasket.",
+        "Ask for confirmation. Do not offer a discount."
+      ],
+      "failure_modes": [
+        "Buries Thursday under a long apology.",
+        "Writes it as a lowercase text.",
+        "Invents a discount, a refund, a tracking number, or a replacement part name."
+      ],
+      "assertions": [
+        "The email is professionally capitalized and says the Tuesday delivery moves to Thursday.",
+        "The email gives the damaged gasket as the reason and asks Priya Shah to confirm Thursday.",
+        "The sender is Casey.",
+        "The email does not offer a discount, a refund, or a tracking number."
+      ],
+      "checks": [
+        {"op": "includes", "text": "Thursday"},
+        {"op": "includes", "text": "Tuesday"},
+        {"op": "includes", "text": "gasket"},
+        {"op": "includes", "text": "Priya"},
+        {"op": "includes", "text": "Casey"},
+        {"op": "excludes", "text": "discount"},
+        {"op": "excludes", "text": "refund"},
+        {"op": "excludes", "text": "tracking"}
+      ]
+    },
+    {
+      "id": 30,
+      "slug": "order-retry",
+      "suite": "use",
+      "category": "technical-explanation",
+      "covers": ["technical_accuracy", "clarity", "adversarial"],
+      "dimensions": ["correctness", "clarity", "task_completion"],
+      "prompt": "Explain to a new on-call engineer, in a short paragraph, the difference between a timeout and a connection reset, and what each one means for retrying a request that places an order.",
+      "expected_output": "A short explanation. A timeout is no complete response within the limit. A reset is the connection being dropped. Retrying an order can create a second order when the first request still went through. The answer does not say to retry both the same way.",
+      "constraints": [
+        "The request places an order.",
+        "Cover both failure modes and what each implies for a retry."
+      ],
+      "failure_modes": [
+        "Says to retry both, with no distinction.",
+        "Defines the words and never says what a retry can do to an order.",
+        "Invents a status code, a client, or a company policy."
+      ],
+      "assertions": [
+        "The answer distinguishes a timeout from a connection reset.",
+        "The answer says a retry of an order can place a second order, duplicate the order, or apply it twice when the first request may already have succeeded.",
+        "The answer does not tell the reader to retry both failures in the same way.",
+        "The answer does not invent a status code or a vendor policy."
+      ],
+      "checks": [
+        {"op": "includes", "text": "timeout"},
+        {"op": "includes", "text": "reset"},
+        {"op": "one_of", "options": ["second order", "twice", "duplicate", "another order", "two orders", "place it twice", "already been placed", "already have been placed", "original order", "same order", "already exists", "idempotency"]}
+      ]
+    },
+    {
+      "id": 31,
+      "slug": "assay-notebook",
+      "suite": "use",
+      "category": "scientific-editing",
+      "covers": ["professional_academic", "adversarial", "leave_unchanged"],
+      "dimensions": ["voice", "context_fit", "intervention", "correctness"],
+      "prompt": "Make this easier to read for a lab notebook. Keep it suitable for the notebook.\n\nSamples were stored at -20 C and assayed within 48 hours.",
+      "expected_output": "The same fact, still in lab-notebook prose, still stating -20 C and 48 hours. Unchanged is acceptable. A chat rewrite is not.",
+      "constraints": [
+        "Keep the temperature and the 48 hours.",
+        "The audience is a lab notebook, not a group chat."
+      ],
+      "failure_modes": [
+        "Rewrites it as a casual aside.",
+        "Drops the temperature or the 48 hours.",
+        "Changes -20 C into a different storage condition."
+      ],
+      "assertions": [
+        "The result still says the samples were stored at -20 C, or an equivalent writing of that temperature.",
+        "The result still says they were assayed within 48 hours.",
+        "The result stays in lab-notebook prose rather than a chat message.",
+        "The result does not add a sample count or a freezer name."
+      ],
+      "checks": [
+        {"op": "includes", "text": "48"},
+        {"op": "one_of", "options": ["-20", "−20"]},
+        {"op": "excludes", "text": "couple"},
+        {"op": "excludes_word", "text": "hey"}
+      ]
+    },
+    {
+      "id": 32,
+      "slug": "toledo-error",
+      "suite": "use",
+      "category": "factual-summary",
+      "covers": ["scientific_uncertainty", "unsupported_claims"],
+      "dimensions": ["correctness", "task_completion", "clarity"],
+      "prompt": "Summarize this for a methods meeting in 3 or 4 sentences. Do not add a conclusion the note does not support.\n\nOn 60 city blocks in Toledo, the model's block-level error was higher than on the training city. The note says the sensor model differed between the two cities. The authors say they cannot tell whether the gap comes from the city or from the sensor. No other city was tested.",
+      "expected_output": "Three or four sentences. The 60 Toledo blocks, the higher error, the different sensor model, the authors' inability to separate city from sensor, and the lack of any other city all survive. The gap is not promoted into a general failure on new cities.",
+      "constraints": [
+        "Use only the note.",
+        "3 or 4 sentences."
+      ],
+      "failure_modes": [
+        "Says the model fails on new cities as a settled result.",
+        "Drops the sensor difference or the authors' uncertainty.",
+        "Invents a second city, an error value, or a cause."
+      ],
+      "assertions": [
+        "The summary includes 60 blocks in Toledo and a higher block-level error than on the training city.",
+        "The summary says the sensor model differed between the cities.",
+        "The summary says the authors cannot tell whether the gap comes from the city or the sensor.",
+        "The summary says no other city was tested.",
+        "The summary does not state that the model fails in new cities generally, and it does not add an error number."
+      ],
+      "checks": [
+        {"op": "includes", "text": "60"},
+        {"op": "includes", "text": "Toledo"},
+        {"op": "includes", "text": "sensor"},
+        {"op": "one_of", "options": ["cannot tell", "can't tell", "could not tell", "unable to tell"]},
+        {"op": "excludes", "text": "fails everywhere"},
+        {"op": "excludes", "text": "all cities"}
+      ]
+    },
+    {
+      "id": 33,
+      "slug": "export-meeting",
+      "suite": "use",
+      "category": "summary",
+      "covers": ["unsupported_claims", "clarity"],
+      "dimensions": ["task_completion", "correctness", "clarity"],
+      "prompt": "Summarize these notes for someone who missed the meeting. Keep the decision, the owner, and the open question.\n\n- The group decided to ship the export without PDF.\n- Maya will fix the CSV escaping bug.\n- It is still open whether legal needs to review the column list. Nobody has asked legal yet.",
+      "expected_output": "A short summary with three surviving points: ship without PDF, Maya owns the CSV escaping bug, and legal review of the columns is still an open question. Legal is not described as having approved anything.",
+      "constraints": [
+        "Use only the notes.",
+        "Keep the decision, the owner, and the open question."
+      ],
+      "failure_modes": [
+        "Drops the open legal question because the decision sounds cleaner without it.",
+        "Says legal approved or declined.",
+        "Reassigns the CSV bug or adds PDF as still in scope."
+      ],
+      "assertions": [
+        "The summary says the export will ship without PDF.",
+        "The summary says Maya will fix the CSV escaping bug.",
+        "The summary says it is still open whether legal needs to review the column list, and that legal has not been asked.",
+        "The summary does not say legal approved, signed off, or refused."
+      ],
+      "checks": [
+        {"op": "includes", "text": "PDF"},
+        {"op": "includes", "text": "Maya"},
+        {"op": "includes", "text": "CSV"},
+        {"op": "includes", "text": "legal"},
+        {"op": "excludes", "text": "legal approved"},
+        {"op": "excludes", "text": "legal signed"}
+      ]
+    },
+    {
+      "id": 34,
+      "slug": "load-note-review",
+      "suite": "use",
+      "category": "code-review",
+      "covers": ["code_review", "adversarial"],
+      "dimensions": ["correctness", "task_completion", "clarity"],
+      "prompt": "Review this function. Report problems that change what a caller gets. Skip style.\n\n```python\ndef load_note(user_id, name):\n    path = f\"/notes/{user_id}/{name}\"\n    text = open(path).read()\n    cache[name] = text\n    return text\n```",
+      "expected_output": "A review that reports path traversal through name, a cache key of name alone so two users can share a note, and an unhandled failure from open() when the file is missing. No style review, and no bug the function does not show.",
+      "constraints": [
+        "Review the function shown.",
+        "Do not invent a surrounding auth system."
+      ],
+      "failure_modes": [
+        "Reports only that open() can throw, and stops.",
+        "Misses that name can leave /notes/{user_id}.",
+        "Misses that cache[name] ignores user_id.",
+        "Invents an authentication or encryption bug the function does not show."
+      ],
+      "assertions": [
+        "The review says name is joined into the path without a check, so a value such as .. can read outside that user's directory.",
+        "The review says the cache is keyed only by name, so a different user_id can receive another user's note text.",
+        "The review says a missing file makes open() fail and that failure is not handled.",
+        "The review does not spend itself on naming or formatting.",
+        "The review does not present an authentication or encryption flaw as something this function shows."
+      ],
+      "checks": [
+        {"op": "one_of", "options": ["..", "traversal", "outside", "escape"]},
+        {"op": "includes", "text": "cache"},
+        {"op": "one_of", "options": ["user_id", "another user", "other user", "two users", "different user"]},
+        {"op": "one_of", "options": ["missing", "not found", "does not exist", "FileNotFound", "cannot be read"]}
+      ]
+    },
+    {
+      "id": 35,
+      "slug": "homepage-ticket",
+      "suite": "use",
+      "category": "unsupported-claims",
+      "covers": ["unsupported_claims", "adversarial"],
+      "dimensions": ["correctness", "intervention", "clarity"],
+      "prompt": "Turn this into a bug ticket. Keep it to what was observed.\n\nThe homepage took about 4 seconds to load on my laptop this morning.",
+      "expected_output": "A ticket that says the homepage took about 4 seconds on the reporter's laptop this morning. It does not add a percentile, an environment, or a tool result.",
+      "constraints": [
+        "The only observation is about 4 seconds, the homepage, the reporter's laptop, this morning."
+      ],
+      "failure_modes": [
+        "Promotes the laptop timing into a production percentile or a lab measurement.",
+        "Names a profiler, a region, or a browser the note did not mention.",
+        "Drops the laptop or the 'about'."
+      ],
+      "assertions": [
+        "The ticket says the homepage took about 4 seconds.",
+        "The ticket keeps the laptop and this morning as the scope.",
+        "The ticket does not add a percentile, a production environment, a browser, or a profiler."
+      ],
+      "checks": [
+        {"op": "includes", "text": "4"},
+        {"op": "includes", "text": "laptop"},
+        {"op": "includes", "text": "homepage"},
+        {"op": "excludes", "text": "p95"},
+        {"op": "excludes", "text": "p99"},
+        {"op": "excludes", "text": "Lighthouse"},
+        {"op": "excludes", "text": "production"}
+      ]
+    },
+    {
+      "id": 36,
+      "slug": "hash-lookup",
+      "suite": "use",
+      "category": "technical-explanation",
+      "covers": ["technical_accuracy", "clarity", "adversarial"],
+      "dimensions": ["correctness", "clarity", "task_completion"],
+      "prompt": "Explain to a teammate, briefly, why people say hash map lookup is O(1), and when that description stops being true.",
+      "expected_output": "A short explanation that O(1) is the usual or average case when keys spread out, and that collisions or a long chain can make a lookup slower than constant time. It does not say lookup is always constant.",
+      "constraints": [
+        "Answer both parts: why people say O(1), and when that stops.",
+        "Keep it brief."
+      ],
+      "failure_modes": [
+        "Says lookup is always O(1).",
+        "Answers only the first half.",
+        "Turns it into a textbook chapter with code for a full hash table."
+      ],
+      "assertions": [
+        "The answer says the O(1) description is the average, usual, or expected case, not a guarantee for every key.",
+        "The answer says the description stops being true when keys collide, chain, or otherwise make the lookup depend on how many keys share a bucket.",
+        "The answer does not say hash map lookup is always O(1).",
+        "The answer stays a brief explanation rather than an implementation guide."
+      ],
+      "checks": [
+        {"op": "one_of", "options": ["O(1)", "constant time", "constant-time"]},
+        {"op": "one_of", "options": ["collision", "collide", "worst", "average", "amortized", "chain"]}
+      ]
+    },
+    {
+      "id": 37,
+      "slug": "export-flag",
+      "suite": "use",
+      "category": "recommendation",
+      "covers": ["adversarial", "unsupported_claims"],
+      "dimensions": ["task_completion", "correctness", "clarity"],
+      "prompt": "What should we do with the export feature flag? Use only these notes.\n\n- The export works in staging.\n- Two customers asked for it.\n- Legal has not reviewed the column list.\n- The flag defaults to off.\n\nGive a recommendation.",
+      "expected_output": "A recommendation that names the staging result and the two customers, and says to leave the flag off until legal reviews the columns. It does not stop at 'it depends,' and it does not say legal has already decided.",
+      "constraints": [
+        "Use only the notes.",
+        "The recommendation has to be something the team can do."
+      ],
+      "failure_modes": [
+        "Says only that it depends, or tells the reader to ask stakeholders, without a recommendation.",
+        "Turns the flag on because customers asked.",
+        "Invents a legal decision, a date, or a risk rating."
+      ],
+      "assertions": [
+        "The answer recommends leaving the flag off, or not enabling it, until legal reviews the column list.",
+        "The answer includes that the export works in staging and that two customers asked for it.",
+        "The answer does not say legal approved or rejected the columns.",
+        "The answer does not consist only of a refusal to recommend."
+      ],
+      "checks": [
+        {"op": "includes", "text": "legal"},
+        {"op": "includes", "text": "staging"},
+        {"op": "one_of", "options": ["two customer", "2 customer"]},
+        {"op": "one_of", "options": ["leave the flag off", "leave it off", "keep the flag off", "keep it off", "stay off", "do not enable", "don't enable", "do not turn", "don't turn", "until legal", "wait for legal"]}
       ]
     }
   ]

@@ -15,28 +15,47 @@ A higher pass count on one run is something to read. It is not proof. Do not rep
 
 ## Dimension marks
 
-Use `better`, `same`, or `worse` for the Sayso answer relative to the answer without it. Leave a cell blank when the case does not list that dimension. Quote the contrasting lines in Notes.
+Use `better`, `same`, or `worse` for the Sayso answer relative to the answer without it. Leave a cell blank when the case does not list that dimension. Context fit and clarity apply when the case lists them. Quote the contrasting lines in Notes.
 
-| Case | Correctness | Task completion | Voice | Intervention | Restraint | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| dishwasher-film |  |  |  |  |  |  |
-| sister-text |  |  |  |  |  |  |
-| reschedule-interview |  |  |  |  |  |  |
-| norovirus-brief |  |  |  |  |  |  |
-| actigraphy-abstract |  |  |  |  |  |  |
-| retry-after-docs |  |  |  |  |  |  |
-| password-reset-review |  |  |  |  |  |  |
-| status-note |  |  |  |  |  |  |
-| casual-message |  |  |  |  |  |  |
-| preserve-voice |  |  |  |  |  |  |
-| professor-email |  |  |  |  |  |  |
-| precision-recall |  |  |  |  |  |  |
-| project-advice |  |  |  |  |  |  |
-| process-thread |  |  |  |  |  |  |
-| satellite-summary |  |  |  |  |  |  |
-| get-user-review |  |  |  |  |  |  |
-| leave-unchanged-message |  |  |  |  |  |  |
-| flood-paragraph |  |  |  |  |  |  |
+| Case | Correctness | Task completion | Voice | Intervention | Restraint | Context fit | Clarity | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| dishwasher-film |  |  |  |  |  |  |  |  |
+| sister-text |  |  |  |  |  |  |  |  |
+| reschedule-interview |  |  |  |  |  |  |  |  |
+| norovirus-brief |  |  |  |  |  |  |  |  |
+| actigraphy-abstract |  |  |  |  |  |  |  |  |
+| retry-after-docs |  |  |  |  |  |  |  |  |
+| password-reset-review |  |  |  |  |  |  |  |  |
+| status-note |  |  |  |  |  |  |  |  |
+| casual-message |  |  |  |  |  |  |  |  |
+| preserve-voice |  |  |  |  |  |  |  |  |
+| professor-email |  |  |  |  |  |  |  |  |
+| precision-recall |  |  |  |  |  |  |  |  |
+| project-advice |  |  |  |  |  |  |  |  |
+| process-thread |  |  |  |  |  |  |  |  |
+| satellite-summary |  |  |  |  |  |  |  |  |
+| get-user-review |  |  |  |  |  |  |  |  |
+| leave-unchanged-message |  |  |  |  |  |  |  |  |
+| flood-paragraph |  |  |  |  |  |  |  |  |
+| editor-tools-rewrite |  |  |  |  |  |  |  |  |
+| prototype-update |  |  |  |  |  |  |  |  |
+| lab-meeting-email |  |  |  |  |  |  |  |  |
+| precision-plain |  |  |  |  |  |  |  |  |
+| flood-cloud |  |  |  |  |  |  |  |  |
+| cache-before-status |  |  |  |  |  |  |  |  |
+| threshold-sentence |  |  |  |  |  |  |  |  |
+| formal-on-purpose |  |  |  |  |  |  |  |  |
+| ship-build |  |  |  |  |  |  |  |  |
+| sam-text |  |  |  |  |  |  |  |  |
+| gasket-email |  |  |  |  |  |  |  |  |
+| order-retry |  |  |  |  |  |  |  |  |
+| assay-notebook |  |  |  |  |  |  |  |  |
+| toledo-error |  |  |  |  |  |  |  |  |
+| export-meeting |  |  |  |  |  |  |  |  |
+| load-note-review |  |  |  |  |  |  |  |  |
+| homepage-ticket |  |  |  |  |  |  |  |  |
+| hash-lookup |  |  |  |  |  |  |  |  |
+| export-flag |  |  |  |  |  |  |  |  |
 
 ## Assertion counts
 

@@ -1,0 +1,77 @@
+{
+  "note": "Hand-written illustrations of the objective checks. These are not model outputs, and they are not a Sayso-versus-baseline result.",
+  "cases": {
+    "editor-tools-rewrite": {
+      "weak": "In today's fast-paced world, automated review is revolutionizing editors. At the end of the day, teams should find balance.",
+      "better": "Automated review now sits inside many editors. A team still has to look at what it flags and what it never sees."
+    },
+    "prototype-update": {
+      "weak": "The prototype is functional, although the user interface requires further refinement.",
+      "better": "the prototype works, but the interface still needs some work"
+    },
+    "lab-meeting-email": {
+      "weak": "hey professor, i can't make the lab meeting tomorrow. report's in though!",
+      "better": "Dear Professor,\n\nI won't be able to attend tomorrow's lab meeting because it conflicts with my research group. I have finished the lab report and submitted it before the deadline."
+    },
+    "precision-plain": {
+      "weak": "Precision is how accurate a model is, and recall is how much it finds.",
+      "better": "Precision asks: of everything the model flagged, how much was correct? Recall asks: of all the real positive cases, how many did it find?"
+    },
+    "flood-cloud": {
+      "weak": "The model successfully mapped the flood and confirmed its full extent.",
+      "better": "The model detected an increase in flooded area, although cloud cover limited part of the scene and may have caused the estimate to underrepresent the actual extent."
+    },
+    "cache-before-status": {
+      "weak": "Make sure errors are handled properly before caching.",
+      "better": "Check the HTTP status before caching the response. Otherwise, a failed request can be stored and reused by later calls as if it were a successful result."
+    },
+    "formal-on-purpose": {
+      "weak": "hey, the draft is done but the figure for section 3 is still wrong. i can send the draft today and fix the figure tomorrow.",
+      "better": "Dear Advisor,\n\nThe draft is done, but the figure for section 3 is still wrong. I can send the draft today and fix the figure tomorrow."
+    },
+    "ship-build": {
+      "weak": "It is important to note that build 418 has failed. In order to provide visibility, the login test did not pass. The API tests passed. The release cannot proceed until the login test is green.",
+      "better": "Build 418 failed the login test. The API tests passed. Don't ship until the login test is green."
+    },
+    "sam-text": {
+      "weak": "Dear Sam, I am running late. Please secure a table upon your arrival. Sorry for the delay.",
+      "better": "running late, grab a table if you get there first"
+    },
+    "gasket-email": {
+      "weak": "hey priya, thursday is fine and we can throw in a discount",
+      "better": "Hi Priya Shah,\n\nI'm Casey. The Tuesday delivery has to move to Thursday because the gasket arrived damaged. Can you confirm that Thursday works?\n\nCasey"
+    },
+    "order-retry": {
+      "weak": "A timeout is when it takes too long, and a reset is when the connection drops. Retry both.",
+      "better": "A timeout means the caller stopped waiting. A reset means the connection was dropped. Retrying a request that places an order can create a second order if the first one still went through."
+    },
+    "assay-notebook": {
+      "weak": "hey we froze the samples and tested them in a couple days",
+      "better": "Samples were stored at -20 C and assayed within 48 hours."
+    },
+    "toledo-error": {
+      "weak": "The model fails in all cities, so the training city was never representative.",
+      "better": "On 60 city blocks in Toledo, block-level error was higher than on the training city. The sensor model differed between the cities. The authors cannot tell whether the gap comes from the city or the sensor, and no other city was tested."
+    },
+    "export-meeting": {
+      "weak": "Ship the export. Maya has the CSV bug, and legal approved the columns.",
+      "better": "The group decided to ship the export without PDF. Maya will fix the CSV escaping bug. It is still open whether legal needs to review the column list, and nobody has asked legal yet."
+    },
+    "load-note-review": {
+      "weak": "open() has no docstring. Add a type hint for name.",
+      "better": "name is interpolated into the path, so a value like .. can read outside that user's directory. cache is keyed only by name, so another user_id can receive a different user's text. A missing file makes open() raise, and that failure is not handled."
+    },
+    "homepage-ticket": {
+      "weak": "Production p95 for the homepage is 4 seconds according to Lighthouse.",
+      "better": "The homepage took about 4 seconds to load on the reporter's laptop this morning."
+    },
+    "hash-lookup": {
+      "weak": "Hash map lookup is O(1). That is the whole story.",
+      "better": "People say lookup is O(1) because that is the average case when keys spread out. It stops being true when keys collide and lookup walks a chain."
+    },
+    "export-flag": {
+      "weak": "It depends. Socialize the idea with stakeholders before anyone decides.",
+      "better": "Leave the flag off until legal reviews the column list. The export works in staging and two customers asked for it, but that review has not happened."
+    }
+  }
+}
