@@ -1,12 +1,16 @@
 # Sayso
 
-Sayso is an open-source [Agent Skill](https://agentskills.io/specification) that helps a model decide what a task needs before it writes.
+Sayso is an open-source [Agent Skill](https://agentskills.io/specification) that helps a model decide what the reader needs to be able to do or know, then write to that.
 
-A capable answer can still be generic, padded, repetitive, or shaped for the wrong situation. Sayso is a short set of instructions for those decisions. A text to a friend, a professional email, a scientific abstract, a news brief, a technical document, and a code review do not share one standard. Formal, technical, and highly structured writing stay that way when the task calls for them. A draft that is already good should be left alone.
+The audience and the task set the standard. A text, a professional email, a scientific note, a technical explanation, and a code review do not share one. Formal, technical, and scientific writing stay that way when the task calls for them. Someone's own words stay theirs. A draft that already does the job should be left alone. Casual, lowercase, and short are not the aim.
 
-Sayso does not install a house style, and it does not turn every answer into something shorter or more casual. Correctness comes before polish. A tendency is not a guarantee, and a review does not stop once the obvious bugs are listed. It is an experiment. Instructions can improve judgment. They cannot guarantee a correct answer, and they do not remove the limits of the model underneath.
+The instructions also keep facts, limits, uncertainty, attribution, and technical precision. Those safeguards matter. They do not by themselves make an explanation clearer or a review more complete. A correct answer can still hide the point, and a review that holds back can still miss a bug.
 
-You do not need Python, Node, or an API key to use it.
+Sayso is not a model. It does not detect or remove "AI writing," and it does not guarantee a better answer. The comparisons in [`evals/`](evals/README.md) are where that claim would have to come from. The ones from October 27, 2026 did not show a consistent improvement.
+
+Instructions can change a result. They cannot guarantee a correct answer, and they do not remove the limits of the model underneath.
+
+You do not need Python, Node, or an API key to use the skill. The evaluation check below uses Python's standard library.
 
 ## Install
 
@@ -97,14 +101,27 @@ If an edit comes back colder, shorter, or more casual than the task deserves, th
 | `references/technical-docs.md` | API and interface documentation |
 | `references/code.md` | Code, review, and debugging |
 | `evals/` | Cases for comparing answers with and without the skill |
+| `docs/` | The static page |
 
 The reference files are for the agent, and only when the task matches. You can ignore `evals/` if you only want to use the skill.
 
 ## Evaluations
 
-The cases, the five grading questions, and the comparison method are in [`evals/README.md`](evals/README.md). The prompts and pass/fail checks are in [`evals/evals.json`](evals/evals.json). Copy [`evals/runs/scorecard.md`](evals/runs/scorecard.md) for each session.
+The cases, the grading questions, and the comparison method are in [`evals/README.md`](evals/README.md). The `use` cases add context fit and clarity to the five questions. The prompts and pass/fail checks are in [`evals/evals.json`](evals/evals.json). Copy [`evals/runs/scorecard.md`](evals/runs/scorecard.md) for each session.
 
-Give the model the prompt only. Run it with Sayso and without Sayso, on the same model, and repeat the pair before treating a difference as stable. One win is not proof. A small sample is not statistical significance.
+Give the model the prompt only. Run it with Sayso and without Sayso, on the same model, and repeat the pair before treating a difference as stable. One win is not proof. A small sample is not statistical significance. A run can show a better answer, a similar answer, or a worse one.
+
+Check the suite, and the hand-written weak and better fixtures, with:
+
+```bash
+python evals/check_suite.py
+```
+
+That command does not call a model. The fixtures show that the objective checks can tell those written answers apart. They are not a Sayso result. [`evals/runs/2026-10-27-examples.json`](evals/runs/2026-10-27-examples.json) is one pass of the eight `examples` prompts, from before the skill was rewritten around the reader's job. Score it with `python evals/check_suite.py evals/runs/2026-10-27-examples.json`. On that day the checker passed 14 answers and failed both threshold answers, because those answers explained the exception without using the phrases the check looks for. That phrase list was later removed. Re-scoring the file does not replay the exit code. Read [`evals/runs/2026-10-27-examples.md`](evals/runs/2026-10-27-examples.md). Several answers were the same either way, and the threshold explanation written with the skill was harder to read.
+
+[`evals/runs/2026-10-27-use.json`](evals/runs/2026-10-27-use.json) is one later pass of the eleven `use` prompts, after that rewrite. [`evals/runs/2026-10-27-use-trial2.json`](evals/runs/2026-10-27-use-trial2.json) repeats three of them. Read [`evals/runs/2026-10-27-use.md`](evals/runs/2026-10-27-use.md) before treating either file as a result. Most pairs were similarly usable. The hash explanation was longer with the skill both times it was tried. The first code review with the skill omitted a missing-file failure that the other review reported, and a second trial did not repeat that split. The first text-to-Sam session without the skill did not return the message; the second trial returned it unchanged on both sides. The checker exits 1 on both saved files. Part of the first exit was a phrase check, later corrected, and part of it was those disagreements. One file is not a repeated result.
+
+[`evals/reports/2026-10-27-full37-summary.md`](evals/reports/2026-10-27-full37-summary.md) is one pass of all 37 prompts, one fresh session per condition. Sayso was loaded by reading the skill file. It did not show a consistent improvement. The answers are in [`evals/runs/2026-10-27-full37.json`](evals/runs/2026-10-27-full37.json).
 
 To run a comparison in Cursor:
 
@@ -113,7 +130,7 @@ To run a comparison in Cursor:
 3. Grade both answers on that case's assertions and dimensions in a copy of the scorecard.
 4. Record the model, any setting you can see, the date, and how many runs you did.
 
-[`evals/runs/2026-10-27-notes.md`](evals/runs/2026-10-27-notes.md) and [`evals/runs/2026-10-27-five-cases.md`](evals/runs/2026-10-27-five-cases.md) are two separate passes from that date. Each is one run per condition. Read the conditions in those files before treating either as a result for the files you have now.
+[`evals/runs/2026-10-27-notes.md`](evals/runs/2026-10-27-notes.md) and [`evals/runs/2026-10-27-five-cases.md`](evals/runs/2026-10-27-five-cases.md) are two earlier passes from that date. Each is one run per condition, on prompts from before the `use` set. Read the conditions in those files before treating either as a result for the files you have now.
 
 ## Limits
 
@@ -152,6 +169,10 @@ uvx --from git+https://github.com/agentskills/agentskills#subdirectory=skills-re
 ```
 
 Run that from the `sayso` folder. On October 27, 2026, `uvx` was not installed, so `skills-ref` was installed with pip into a temporary environment and `skills-ref validate` was run on this directory. The checker reported: `Valid skill`. That check looks at the frontmatter and the folder name. It does not judge the instructions. Re-run it after changing the frontmatter.
+
+## Site
+
+`docs/` is a static page. To publish it, open the repository settings, choose Pages, and set the source to branch `main` and folder `/docs`. GitHub then serves it at [charlsz.github.io/sayso](https://charlsz.github.io/sayso/).
 
 ## License
 

@@ -1,0 +1,305 @@
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+
+:root {
+  --bg: #fdfdfc;
+  --ink: #111111;
+  --line: #9c9c9b;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.18em;
+}
+
+a:visited {
+  color: var(--ink);
+}
+
+a:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+
+code {
+  font-family: Inter, sans-serif;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  transform: translateY(-150%);
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 8px 10px;
+}
+
+.skip:focus {
+  transform: none;
+}
+
+.wrap {
+  width: min(1040px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.mark {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+header nav a {
+  font-size: 15px;
+}
+
+h1 {
+  max-width: 11em;
+  margin: 72px 0 0;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.asks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: min(100%, 420px);
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.asks li,
+.bubble {
+  border: 1px solid var(--line);
+  border-radius: 18px 18px 18px 4px;
+  padding: 10px 14px;
+}
+
+.after {
+  max-width: 16em;
+  margin: 28px 0 0;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.explain {
+  max-width: 38rem;
+  margin: 28px 0 0;
+}
+
+.meta {
+  max-width: 40rem;
+  margin: 18px 0 0;
+  color: var(--line);
+  font-size: 15px;
+}
+
+.examples {
+  margin-top: 88px;
+}
+
+.case {
+  padding: 40px 0 8px;
+  border-top: 1px solid var(--line);
+}
+
+.case h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.case .what {
+  max-width: 40rem;
+  margin: 10px 0 0;
+}
+
+.shot {
+  margin-top: 28px;
+}
+
+.role {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--line);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.bubble {
+  width: min(100%, 640px);
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 0;
+  margin-top: 28px;
+}
+
+.pair > div:first-child {
+  padding-right: 28px;
+}
+
+.pair > div + div {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+}
+
+.pair .role {
+  color: var(--ink);
+}
+
+.answer {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.results {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.results li {
+  max-width: 40rem;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  font-size: 16px;
+}
+
+.install {
+  margin-top: 88px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.install h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.install p {
+  max-width: 38rem;
+}
+
+.os {
+  margin: 28px 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+pre {
+  max-width: 100%;
+  margin: 0 0 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+footer {
+  margin: 72px 0 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+
+@media (max-width: 720px) {
+  .wrap {
+    width: min(1040px, calc(100% - 32px));
+  }
+
+  h1 {
+    margin-top: 48px;
+  }
+
+  .pair {
+    grid-template-columns: 1fr;
+  }
+
+  .pair > div:first-child {
+    padding-right: 0;
+  }
+
+  .pair > div + div {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  .examples,
+  .install {
+    margin-top: 64px;
+  }
+}

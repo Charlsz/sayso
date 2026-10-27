@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sayso</title>
+  <meta name="description" content="Sayso helps an agent decide what a task needs before writing. One comparison of 37 prompts did not show that it improves answers overall.">
+  <meta name="theme-color" content="#FDFDFC">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#examples">Skip to examples</a>
+  <div class="wrap">
+    <header>
+      <a class="mark" href="./">sayso</a>
+      <nav>
+        <a href="https://github.com/Charlsz/sayso">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>repeating this every time got old</h1>
+      <ul class="asks">
+        <li>write this more human</li>
+        <li>write it like me</li>
+        <li>explain it like i'm 3</li>
+      </ul>
+      <p class="after">so i made a skill that decides what the reader needs.</p>
+      <p class="explain">Sayso, an <a href="https://agentskills.io/specification">agent skill</a>, helps an agent decide what a task actually needs before writing. A message to a friend, a formal email, a technical explanation, and a code review all need different things. It considers the reader, the purpose, and what a good result requires. Sometimes that means rewriting. Sometimes it means keeping the original. A shorter answer isn't automatically better, and a more polished one isn't automatically right.</p>
+
+      <div class="examples" id="examples">
+        <section class="case">
+          <h2>What the comparison showed</h2>
+          <p class="what">I compared Sayso and the same model without it across 37 prompts. Each condition ran once per prompt, in a fresh session.</p>
+          <p class="what">The results were mixed. Sayso preserved some original wording, avoided a few unsupported additions, and caught a concurrency issue the other answer missed. It also produced explanations that were longer than requested and occasionally added meaning that wasn't in the source.</p>
+          <p class="what">This is an early comparison, not proof that Sayso improves answers overall. The <a href="https://github.com/Charlsz/sayso">repository</a> contains the evaluation cases and results.</p>
+        </section>
+
+        <section class="case">
+          <h2>An explanation that was supposed to be brief</h2>
+          <p class="what">The prompt asked for brief. Sayso’s answer is more detailed than that. This pair is from an earlier session of this prompt, not from the 37-case run. That run did not repeat every prompt.</p>
+          <div class="shot">
+            <p class="role">you</p>
+            <p class="bubble">Explain to a teammate, briefly, why people say hash map lookup is O(1), and when that description stops being true.</p>
+            <div class="pair">
+              <div>
+                <p class="role">sayso</p>
+                <p class="answer">People call hash map lookup O(1) because hashing the key selects a bucket and reading that array slot takes constant time. When the hash spreads keys evenly and the load factor (entries divided by buckets) stays within a fixed bound, the number of other keys you have to check stays constant on average. Expected lookup time therefore stays independent of how many entries the map holds.
+
+A normal collision is already part of that average. The O(1) description stops holding when the extra work grows with the map.
+
+If many keys share one bucket, a weak hash or a set of keys built to collide makes lookup walk a chain or a probe run that can reach O(n). If the table never grows, the load factor rises with the entry count, and the expected length of that walk rises with it. If the key is long, hashing it and comparing it cost time proportional to the key. On a table that no longer fits in cache, the number of probes can stay bounded while each probe is no longer a cheap read. Where a long chain is stored as a tree, the worst case is O(log n).</p>
+              </div>
+              <div>
+                <p class="role">without</p>
+                <p class="answer">Hash map lookup is called O(1) because a hash function turns the key into a bucket index in one shot, and a table that resizes to keep its load factor bounded has only a constant number of keys in that bucket on average. You hash, jump to the bucket, and check a handful of entries — the work does not grow with how many keys are stored.
+
+That stops being true in the worst case. If many keys land in the same bucket, a chain becomes a linear scan, so lookup is O(n). A predictable hash makes this easy to force. It also fails when the hash of the key itself is not constant-time (a long string costs work proportional to its length), or when the table never resizes and buckets keep getting longer. A single insert that triggers a resize is O(n) too; the O(1) claim is about the expected cost of a lookup while the load factor stays bounded, not every individual operation.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case">
+          <h2>A ticket that had to stay a ticket</h2>
+          <p class="what">Sayso kept “my laptop.” The other answer widened it to a laptop. This pair is from an earlier session of this prompt, not from the 37-case run.</p>
+          <div class="shot">
+            <p class="role">you</p>
+            <p class="bubble">Turn this into a bug ticket. Keep it to what was observed.
+
+The homepage took about 4 seconds to load on my laptop this morning.</p>
+            <div class="pair">
+              <div>
+                <p class="role">sayso</p>
+                <p class="answer">Homepage took about 4 seconds to load
+
+The homepage took about 4 seconds to load on my laptop this morning.</p>
+              </div>
+              <div>
+                <p class="role">without</p>
+                <p class="answer">Title: Homepage took about 4 seconds to load
+
+Observed: The homepage took about 4 seconds to load on a laptop this morning.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="install" id="install">
+        <h2>Install</h2>
+        <p>The skill is this repository. The last folder in the path has to be named <code>sayso</code>, with <code>SKILL.md</code> directly inside it. Then start a new chat. In Cursor, type <code>/sayso</code>. In Codex, type <code>$</code> or run <code>/skills</code>.</p>
+        <p class="os">Windows, in PowerShell</p>
+        <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills" | Out-Null
+git clone https://github.com/Charlsz/sayso.git "$env:USERPROFILE\.agents\skills\sayso"</code></pre>
+        <p class="os">macOS and Linux</p>
+        <pre><code>mkdir -p ~/.agents/skills
+git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso</code></pre>
+        <p>The rest of the steps, including a project-only install, are in the <a href="https://github.com/Charlsz/sayso#install">README</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://github.com/Charlsz/sayso/blob/main/LICENSE">MIT</a>. Copyright (c) 2026 Charlsz.
+    </footer>
+  </div>
+</body>
+</html>
