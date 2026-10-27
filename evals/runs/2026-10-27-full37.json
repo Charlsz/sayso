@@ -1,0 +1,562 @@
+{
+  "date": "2026-10-27",
+  "time": "Sessions started about 7:45 p.m. America/Chicago (UTC-5) and finished the same evening. An exact end clock time was not recorded.",
+  "model": "Grok 4.7, inherited by each fresh session. No finer version string was reported.",
+  "settings": "not exposed. Temperature was not available.",
+  "runs": 1,
+  "cases_attempted": 37,
+  "cases_completed_both_conditions": 37,
+  "cases_skipped": [],
+  "execution": {
+    "method": "One fresh Cursor subagent per case per condition. The subagent model was inherit, so each session used the same model as the parent session, Grok 4.7. Sessions did not share conversation history.",
+    "with_sayso": "The session was told to read SKILL.md and follow it, and to read only a reference that file pointed to for the task. It was told not to read the evals folder, not to edit files, and to return only the deliverable. It was not given assertions, checks, or expected outputs.",
+    "without_sayso": "The session was given the same user prompt and told not to read files and not to apply a skill. It was told to return only the deliverable. It was not told to imitate or avoid Sayso's style. The do-not-read instruction is a setup difference, used because the skill files are in the workspace.",
+    "skill_load_verification": "After each session, its transcript was searched for Read tool calls. Every with-Sayso session read SKILL.md. The reference it opened, if any, is in files_read. No without-Sayso session read a file. This is not a /sayso invocation in a normal Cursor chat, and it does not measure whether the skill description would have been selected on its own.",
+    "deviations": [
+      "Both conditions were told to return only the deliverable, so the saved text has no chat wrapper.",
+      "The without-Sayso condition was told not to read files.",
+      "Which reference to open was decided by the session after reading SKILL.md, not assigned in the prompt."
+    ],
+    "retries": [],
+    "errors": []
+  },
+  "files_read": {
+    "dishwasher-film": [
+      "SKILL.md"
+    ],
+    "sister-text": [
+      "SKILL.md",
+      "references/voice.md"
+    ],
+    "reschedule-interview": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "norovirus-brief": [
+      "SKILL.md",
+      "references/factual.md"
+    ],
+    "actigraphy-abstract": [
+      "SKILL.md",
+      "references/factual.md"
+    ],
+    "retry-after-docs": [
+      "SKILL.md",
+      "references/technical-docs.md"
+    ],
+    "password-reset-review": [
+      "SKILL.md",
+      "references/code.md"
+    ],
+    "status-note": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "casual-message": [
+      "SKILL.md",
+      "references/voice.md"
+    ],
+    "preserve-voice": [
+      "SKILL.md",
+      "references/voice.md"
+    ],
+    "professor-email": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "precision-recall": [
+      "SKILL.md"
+    ],
+    "project-advice": [
+      "SKILL.md"
+    ],
+    "process-thread": [
+      "SKILL.md"
+    ],
+    "satellite-summary": [
+      "SKILL.md",
+      "references/factual.md"
+    ],
+    "get-user-review": [
+      "SKILL.md",
+      "references/code.md"
+    ],
+    "leave-unchanged-message": [
+      "SKILL.md",
+      "references/voice.md"
+    ],
+    "flood-paragraph": [
+      "SKILL.md"
+    ],
+    "editor-tools-rewrite": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "prototype-update": [
+      "SKILL.md"
+    ],
+    "lab-meeting-email": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "precision-plain": [
+      "SKILL.md"
+    ],
+    "flood-cloud": [
+      "SKILL.md",
+      "references/technical-docs.md"
+    ],
+    "cache-before-status": [
+      "SKILL.md",
+      "references/technical-docs.md"
+    ],
+    "threshold-sentence": [
+      "SKILL.md"
+    ],
+    "formal-on-purpose": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "ship-build": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "sam-text": [
+      "SKILL.md",
+      "references/voice.md"
+    ],
+    "gasket-email": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "order-retry": [
+      "SKILL.md"
+    ],
+    "assay-notebook": [
+      "SKILL.md",
+      "references/technical-docs.md"
+    ],
+    "toledo-error": [
+      "SKILL.md",
+      "references/factual.md"
+    ],
+    "export-meeting": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "load-note-review": [
+      "SKILL.md",
+      "references/code.md"
+    ],
+    "homepage-ticket": [
+      "SKILL.md",
+      "references/professional.md"
+    ],
+    "hash-lookup": [
+      "SKILL.md"
+    ],
+    "export-flag": [
+      "SKILL.md"
+    ]
+  },
+  "baseline_files_read": {},
+  "case_index": [
+    {
+      "id": 1,
+      "slug": "dishwasher-film",
+      "suite": "core",
+      "category": "explanation",
+      "covers": null
+    },
+    {
+      "id": 2,
+      "slug": "sister-text",
+      "suite": "core",
+      "category": "voice",
+      "covers": null
+    },
+    {
+      "id": 3,
+      "slug": "reschedule-interview",
+      "suite": "core",
+      "category": "professional-email",
+      "covers": null
+    },
+    {
+      "id": 4,
+      "slug": "norovirus-brief",
+      "suite": "core",
+      "category": "factual-summary",
+      "covers": null
+    },
+    {
+      "id": 5,
+      "slug": "actigraphy-abstract",
+      "suite": "core",
+      "category": "scientific-editing",
+      "covers": null
+    },
+    {
+      "id": 6,
+      "slug": "retry-after-docs",
+      "suite": "core",
+      "category": "technical-documentation",
+      "covers": null
+    },
+    {
+      "id": 7,
+      "slug": "password-reset-review",
+      "suite": "core",
+      "category": "code-review",
+      "covers": null
+    },
+    {
+      "id": 8,
+      "slug": "status-note",
+      "suite": "core",
+      "category": "leave-unchanged",
+      "covers": null
+    },
+    {
+      "id": 9,
+      "slug": "casual-message",
+      "suite": "judgment",
+      "category": "voice",
+      "covers": null
+    },
+    {
+      "id": 10,
+      "slug": "preserve-voice",
+      "suite": "judgment",
+      "category": "voice",
+      "covers": null
+    },
+    {
+      "id": 11,
+      "slug": "professor-email",
+      "suite": "judgment",
+      "category": "professional-email",
+      "covers": null
+    },
+    {
+      "id": 12,
+      "slug": "precision-recall",
+      "suite": "judgment",
+      "category": "technical-explanation",
+      "covers": null
+    },
+    {
+      "id": 13,
+      "slug": "project-advice",
+      "suite": "judgment",
+      "category": "advice",
+      "covers": null
+    },
+    {
+      "id": 14,
+      "slug": "process-thread",
+      "suite": "judgment",
+      "category": "explanation",
+      "covers": null
+    },
+    {
+      "id": 15,
+      "slug": "satellite-summary",
+      "suite": "judgment",
+      "category": "factual-summary",
+      "covers": null
+    },
+    {
+      "id": 16,
+      "slug": "get-user-review",
+      "suite": "judgment",
+      "category": "code-review",
+      "covers": null
+    },
+    {
+      "id": 17,
+      "slug": "leave-unchanged-message",
+      "suite": "judgment",
+      "category": "leave-unchanged",
+      "covers": null
+    },
+    {
+      "id": 18,
+      "slug": "flood-paragraph",
+      "suite": "judgment",
+      "category": "scientific-editing",
+      "covers": null
+    },
+    {
+      "id": 19,
+      "slug": "editor-tools-rewrite",
+      "suite": "examples",
+      "category": "naturalness",
+      "covers": [
+        "naturalness",
+        "unsupported_claims"
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "prototype-update",
+      "suite": "examples",
+      "category": "leave-unchanged",
+      "covers": [
+        "leave_unchanged",
+        "voice"
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "lab-meeting-email",
+      "suite": "examples",
+      "category": "professional-email",
+      "covers": [
+        "professional_academic",
+        "explicit_instruction"
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "precision-plain",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": [
+        "technical_accuracy",
+        "concision"
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "flood-cloud",
+      "suite": "examples",
+      "category": "scientific-editing",
+      "covers": [
+        "scientific_uncertainty",
+        "unsupported_claims"
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "cache-before-status",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": [
+        "technical_accuracy",
+        "concision"
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "threshold-sentence",
+      "suite": "examples",
+      "category": "technical-explanation",
+      "covers": [
+        "technical_accuracy",
+        "concision"
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "formal-on-purpose",
+      "suite": "examples",
+      "category": "professional-email",
+      "covers": [
+        "explicit_instruction",
+        "professional_academic"
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "ship-build",
+      "suite": "use",
+      "category": "robotic-source",
+      "covers": [
+        "naturalness",
+        "clarity"
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "sam-text",
+      "suite": "use",
+      "category": "leave-unchanged",
+      "covers": [
+        "leave_unchanged",
+        "voice"
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "gasket-email",
+      "suite": "use",
+      "category": "professional-email",
+      "covers": [
+        "professional_academic",
+        "unsupported_claims"
+      ]
+    },
+    {
+      "id": 30,
+      "slug": "order-retry",
+      "suite": "use",
+      "category": "technical-explanation",
+      "covers": [
+        "technical_accuracy",
+        "clarity",
+        "adversarial"
+      ]
+    },
+    {
+      "id": 31,
+      "slug": "assay-notebook",
+      "suite": "use",
+      "category": "scientific-editing",
+      "covers": [
+        "professional_academic",
+        "adversarial",
+        "leave_unchanged"
+      ]
+    },
+    {
+      "id": 32,
+      "slug": "toledo-error",
+      "suite": "use",
+      "category": "factual-summary",
+      "covers": [
+        "scientific_uncertainty",
+        "unsupported_claims"
+      ]
+    },
+    {
+      "id": 33,
+      "slug": "export-meeting",
+      "suite": "use",
+      "category": "summary",
+      "covers": [
+        "unsupported_claims",
+        "clarity"
+      ]
+    },
+    {
+      "id": 34,
+      "slug": "load-note-review",
+      "suite": "use",
+      "category": "code-review",
+      "covers": [
+        "code_review",
+        "adversarial"
+      ]
+    },
+    {
+      "id": 35,
+      "slug": "homepage-ticket",
+      "suite": "use",
+      "category": "unsupported-claims",
+      "covers": [
+        "unsupported_claims",
+        "adversarial"
+      ]
+    },
+    {
+      "id": 36,
+      "slug": "hash-lookup",
+      "suite": "use",
+      "category": "technical-explanation",
+      "covers": [
+        "technical_accuracy",
+        "clarity",
+        "adversarial"
+      ]
+    },
+    {
+      "id": 37,
+      "slug": "export-flag",
+      "suite": "use",
+      "category": "recommendation",
+      "covers": [
+        "adversarial",
+        "unsupported_claims"
+      ]
+    }
+  ],
+  "with_sayso": {
+    "dishwasher-film": "The white film is calcium from your hard water. Cheap pods do not carry enough detergent or rinse aid for water that hard, so the minerals dry onto the glass.\n\nSoak one cloudy glass in white vinegar, or rub the film with a vinegar-damp cloth.\n\nIf the cloudiness comes off, the film is mineral and the glass is fine. Fill the rinse-aid dispenser and keep it full. Switch to a detergent made for hard water, or add a hard-water booster with the pod. Run one empty cycle with a dishwasher cleaner or citric acid so scale already in the machine does not go back onto the glasses.\n\nIf the vinegar does nothing, the glass is etched. The haze is in the surface, and a different detergent will leave it cloudy.",
+    "sister-text": "lena i can't do sunday. mom asked me to drive dad to the thing at 1. last time i tried to do both i was a jerk to everybody. can we do coffee monday after you drop the kids? i'll come to you",
+    "reschedule-interview": "Subject: Onsite moved to Friday at 1:30 p.m.\n\nHi Jordan,\n\nWe need to move your onsite from Thursday at 10:00 to Friday at 1:30 p.m. in the same office, because the Thursday panel had a conflict.\n\nPlease confirm that Friday at 1:30 p.m. works for you.\n\nI'm sorry for the change.\n\nAlex Rivera\nEngineering Manager",
+    "norovirus-brief": "The city health department’s Tuesday bulletin reported 128 lab-confirmed norovirus cases in the county from Oct. 1 through Oct. 20. The bulletin said this is 40 more cases than the same dates last year. It said most cases were linked to two long-term care facilities. It did not name the facilities.\n\nDirector Helen Cho said, “We are not seeing spread in schools.” The bulletin did not include school absentee numbers. A parent at a county board meeting said three children in one classroom were home sick with stomach symptoms. The department has not confirmed that account.\n\nThese notes do not include hospitalization counts or a cause for the increase.",
+    "actigraphy-abstract": "We compared a wrist-worn actigraph with polysomnography in adults with insomnia. Forty-two participants (mean age 46 years, 25 women) spent one night in the laboratory. Sleep onset was defined as the first epoch of stage N2. The device estimated sleep onset 18 minutes later than polysomnography, on average (SD 11 minutes). Total sleep time differed by 24 minutes (SD 19 minutes). These findings should not be generalized to people without insomnia. They should not be generalized to nights recorded at home. The device may be useful, but further research is needed.",
+    "retry-after-docs": "`parseRetryAfter` parses `header` as a Retry-After value and returns the delay in milliseconds, or `null`. It does not sleep. It does not retry.\n\n```ts\nexport function parseRetryAfter(header: string | null): number | null\n```\n\n`header` is a string or `null`.\n\n- If `header` is `null`, an empty string, or whitespace, `parseRetryAfter` returns `null`.\n- If `header` is an integer number of seconds, such as `\"120\"`, `parseRetryAfter` returns that many milliseconds. `\"120\"` returns `120000`.\n- If `header` is an HTTP-date that parses, `parseRetryAfter` returns the delay from now until that time, in milliseconds. The delay is never negative. A past date returns `0`.\n- Any other `header` returns `null`.\n\nValues above 86400 seconds are capped at 86400 seconds before conversion to milliseconds. The cap is `86400000` milliseconds.",
+    "password-reset-review": "`resetPassword` can be turned into attacker-controlled SQL, it stores the password it was given, and the same token can change the password more than once. A missing token and a finished reset both return `undefined`.\n\n**Injected SQL.** `token` and `newPassword` are placed in the statement text. A `'` in either value ends the string, and the rest is parsed as SQL, so a caller can change which rows are written or add another statement. The token and password also sit in the query text, so a log of that query keeps them. Bind `token`, `newPassword`, and `user_id` as parameters in all three statements.\n\n**The password is stored as given.** The update writes `newPassword` into `users.password`. Anyone who can read that column can use the password. Hash it with a slow password hash (argon2id, bcrypt, or scrypt) and store the hash.\n\n**The token can be used twice.** The select, update, and delete are separate statements, and each can commit on its own. A second call can select the same row after the first select and before the first delete, so both updates run and the later password remains. If the function stops after the update and before the delete, the token is still valid. In one transaction, lock the reset row, store the hash, and delete the row. Commit when the update changes one row. Roll back when it changes none, so the token stays usable.\n\n**Failure and success look the same.** A missing token returns `undefined`, and a finished reset does too. Once `row` is truthy, the delete follows the update, and nothing reads the update result. The only check is `!row`, so a truthy row with no `user_id` produces `WHERE id = undefined`. Return an error when the token is missing or the update changes no row, and delete the token only after the update has changed one row.\n\n**An empty password is accepted.** `\"\"` is written like any other password. Reject an empty password before the reset row is read, so a rejected password does not consume the token.\n\nThis assumes `db.query` runs the SQL it is given and returns one row object or a falsy value, and that no caller hashes the password or wraps these calls in a transaction. The function does not show whether a failed query throws, whether a token expires, or whether `token` is unique. If `db.query` is asynchronous, this code reads `row` before the select has finished.",
+    "status-note": "The deploy is rolled back, so checkout is on the previous release. Payments are succeeding. Search still returns stale results. That fix is in the next deploy.",
+    "casual-message": "Hey, want to meet up sometime this week? It's been a while and it'd be nice to catch up.",
+    "preserve-voice": "i've been working on this for a while and i finally got something that actually works. still a lot to fix but i'm happy with where it's going",
+    "professor-email": "Subject: Can't attend today's meeting\n\nDear Professor,\n\nI can't attend today's meeting because I have a project meeting at the same time.\n\nI've kept up with the coursework. When you have time, could you review my final project presentation?\n\nThank you.",
+    "precision-recall": "Precision and recall answer different questions about a binary classifier. Precision is the proportion of positive predictions that are correct. Recall is the proportion of actual positive cases that the classifier detects.\n\nLet \\(TP\\), \\(FP\\), and \\(FN\\) denote the counts of true positives, false positives, and false negatives.\n\n\\[\n\\mathrm{Precision}=\\frac{TP}{TP+FP}\n\\]\n\n\\[\n\\mathrm{Recall}=\\frac{TP}{TP+FN}\n\\]\n\nPrecision is undefined when \\(TP+FP=0\\), because there is no positive prediction to assess. Recall is undefined when \\(TP+FN=0\\), because the reference data contain no positive case.\n\nNeither ratio determines the other, because they penalize different mistakes. A trade-off appears when a threshold converts a score into a label. Assume the positive label is assigned when the score is at least \\(t\\). If \\(t\\) increases, the new set of positive predictions is a subset of the old one. The number of actual positives is fixed, so recall does not increase. Precision may increase or decrease: removing a false positive increases it, and removing a true positive decreases it. If \\(t\\) decreases, every added true positive increases recall, and every added false positive leaves recall unchanged. An added true positive does not reduce precision. An added false positive reduces precision whenever \\(TP\\) is already positive, and it keeps precision at 0 when \\(TP=0\\). Precision and recall can both equal 1 only if some threshold produces no false positives and no false negatives. Otherwise, choosing the threshold is a judgment about the relative cost of a false positive and a false negative, or about a constraint on one of the two rates.\n\nIn satellite flood detection, take the positive class to be a flooded pixel. Precision is the fraction of pixels labeled flooded that are flooded. A dry pixel with that label is a false positive and enters the denominator of precision. Recall is the fraction of flooded pixels that receive the flooded label. A flooded pixel without that label is a false negative and enters the denominator of recall. Under the same threshold rule, a higher \\(t\\) removes pixels from the map, and recall does not rise. Suppose the map supports a warning and a missed flooded pixel is treated as the costlier error. The threshold is then set lower, and the additional dry pixels that enter the map are accepted. Suppose the map is used to report flooded area, or to send a crew to each mapped pixel, and a dry pixel labeled flooded is treated as the costlier error. The threshold is then set higher, and the additional flooded pixels left off the map are accepted.",
+    "project-advice": "Get changes merged into a tool people in your target role already use, and put that on the resume as one line with links to the pulls. Write the repository for the person who opened it from that line. That visit is the one you can plan on.\n\nThe repository then has to show what the software does, that it builds and is tested, and that you worked in it the way a team works. Show the third with issues, review, and commits spread across the weeks you are applying.\n\nStart your own repository only when you can name a person who is not you and a repeated task the tool would take off their plate. Otherwise you are guessing at a user, which is how the last projects stalled.\n\n**This week, on the contribution path**\n\nChoose the role the resume is for: backend, infrastructure, developer tools, or software near hardware. Open three current internship or new-grad posts for that role and write down the languages and tools they share. Work in that stack so the posts and the resume describe the same person.\n\nStart from a library or tool you already build with. Use it only if you can build it and run its tests on your machine, it has a contributing guide, and a maintainer has replied to issues or pull requests in the last few weeks.\n\nRead one merged pull request from the first comment through the merge. Match that bar for the test and the explanation.\n\nThen reproduce one open bug, comment that you are taking it, and send the fix with a test.\n\n**This week, if you are starting the tool**\n\nWrite the README before any feature work. The first paragraph names the user and the task. Then add install steps, the test command, and one copy-paste session that shows the tool working. License it MIT or Apache-2.0, so a company can read the code without asking you.\n\nShip the smallest command that makes that session true. Include a test and continuous integration, such as GitHub Actions, on that first public commit.\n\nIf your posts lean systems, infrastructure, or developer tools, use the lab work you already have. A flasher or log parser for a board you use, a build or cache helper, a small protocol tool, or a tracer will give that interviewer a concrete change to discuss. If the posts are product backend roles, build the tool in that backend stack.\n\n**When it is done**\n\nOn the contribution path, stop adding scope once the resume line can cite more than one merged change that altered behavior, each with tests. A typo or formatting pull does not count. Format the line as `Project — behavior you changed (pulls #__, #__)`. Pin the repository and put the line on your GitHub profile and on every application.\n\nOn your own tool, the “does this exist” stage is over when a stranger has run it. Publish to the language’s package index, or ship a downloadable binary if it is a command-line tool. Post that link in the lab channel, the course forum, or the forum for that board. When someone cannot install it, fix the install before you add a feature. File your own bugs as issues and close them with pull requests. The next repository waits until that stranger has run this one.\n\n**What you need in the room**\n\nBe able to walk one change from memory: what broke, what you decided, and which test locks the behavior. Say that walk out loud once before you send the link. The resume line gets you the interview. The walk is the interview.\n\n**While you apply**\n\nSend applications while this is in progress. The repository is the proof attached to the application. People you have never met write to you after they depend on the tool, or after a maintainer already knows your work. Keep the default branch moving for the whole stretch you are applying, because a repository that stopped when the course ended reads as coursework.",
+    "process-thread": "A process is a running program with its own memory and resources. A thread is a sequence of instructions running inside a process. The threads of one process share that process’s memory.\n\nThe operating system gives each process a separate address space. Data moves from one process to another through a pipe, a socket, or a region of memory the processes share on purpose. Creating a process, and switching the processor from one process to another, costs more because the address space changes too.\n\nEach thread has its own stack and its own place in the code. The threads share the heap, the program code, and open files. On one processor they take turns. On several processors they can run at the same time. Switching from one thread to another in the same process costs less because the address space stays the same. They hand data to each other by writing memory the others can read, so that shared data has to be coordinated, because two threads can change it at the same time. When the process ends, every thread in it ends with it.",
+    "satellite-summary": "A model evaluated on 240 satellite image tiles from two regions achieved an F1 score of 0.87 in Region A and 0.71 in Region B. Region B contained more cloud cover and a different distribution of flood events. The evaluation did not include any locations outside these two regions, and no confidence intervals were calculated. The results suggest the model may perform differently across geographic settings, but further evaluation is needed to determine why.",
+    "get-user-review": "The function has three bugs.\n\n**A failed response is cached as the user.** `fetch` fulfills for an HTTP error such as 404 or 500. Nothing checks `response.ok` before `response.json()` and `cache.set`. If that body is JSON, the function returns it as the user, and the next call with the same id returns it from the cache. It stays there until the cache removes the entry. This snippet does not show that lifetime. If `response.json()` throws, the function rejects and the cache is unchanged. A network failure also rejects before `cache.set`, so that failure is not stored.\n\nThrow before parsing when the status is not ok, and do not cache that response.\n\n```ts\nif (!response.ok) {\n  throw new Error(`getUser failed: ${response.status}`);\n}\n```\n\n**Some ids change the request URL.** The path is `` `/api/users/${id}` ``. An id that contains `/`, `?`, or `#` selects a different path or query. I assumed `id` is the raw identifier.\n\nEncode it as one path segment. Keep the raw `id` as the cache key.\n\n```ts\nfetch(`/api/users/${encodeURIComponent(id)}`)\n```\n\n**Two overlapping calls both miss the cache.** `cache.set` runs only after `fetch` and `json()` finish. Another call can start during those awaits, see no entry, and send a second request. The later `cache.set` overwrites the earlier one. Until the status check is in place, a slower error body can replace a user that was already stored.\n\nStore the in-flight promise before awaiting it, and remove it if the promise rejects. The lines above the fetch stay as they are. This assumes `cache.get` returns the same value `cache.set` stored, and that `cache.delete` exists.\n\n```ts\nconst pending = fetch(`/api/users/${encodeURIComponent(id)}`).then(async (response) => {\n  if (!response.ok) throw new Error(`getUser failed: ${response.status}`);\n  return response.json();\n});\n\ncache.set(id, pending);\n\ntry {\n  return await pending;\n} catch (error) {\n  cache.delete(id);\n  throw error;\n}\n```\n\nThe second call then hits `if (cached) return cached` and shares that promise. This function is async, so it unwraps the promise. If this cache cannot hold a promise, keep the promise in a separate `Map` and call `cache.set` only with the resolved user. If other readers of this cache expect a user object, replace the promise with the user after it resolves.\n\nA test still has to cover a non-OK status, an id that contains `/` or `?`, and two calls that overlap. I have not run this function.",
+    "leave-unchanged-message": "hey, i pushed the fix. the issue was caused by the cache not being invalidated after an update. should be good now, but let me know if you can still reproduce it.",
+    "flood-paragraph": "The proposed pipeline estimates flood extent by generating a water segmentation mask from multispectral satellite imagery and comparing that mask with a reference layer representing permanent water bodies. The comparison produces a difference mask that identifies candidate areas of newly detected water, that is, areas classified as water in the segmentation mask but absent from the permanent-water reference. However, the accuracy of this estimate depends on image quality, on temporal alignment between the input imagery and the reference layer, and on the reliability of the underlying segmentation model.",
+    "editor-tools-rewrite": "Automated review now shows up inside many editors. A team should look at what the tool flags and what it never sees.",
+    "prototype-update": "the prototype works, but the interface still needs some work",
+    "lab-meeting-email": "Subject: Unable to attend tomorrow's lab meeting\n\nDear Professor,\n\nI will be unable to attend tomorrow's lab meeting because of a scheduling conflict with my research group. I have finished the lab report and submitted it before the deadline.",
+    "precision-plain": "Precision measures the proportion of positive predictions that are correct. Recall measures the proportion of actual positive cases that the model identifies. Check precision when you need to know whether a positive prediction is trustworthy, and check recall when you need to know whether the model is missing real cases.",
+    "flood-cloud": "The model detected a larger flooded area in the post-event image. Because cloud cover limited visibility in part of the scene, the estimate may underrepresent the actual extent.",
+    "cache-before-status": "Check the response status before caching it. Caching an HTTP error stores the failure, so later calls reuse that result.",
+    "threshold-sentence": "On a fixed set of scores, raising the decision threshold for the positive class adds no positive predictions and may remove some, so recall stays the same or falls. Precision can rise, fall, or stay the same with the balance of true positives and false positives among the predictions that drop out, and it becomes undefined if no case remains predicted positive.",
+    "formal-on-purpose": "Subject: Draft ready today; section 3 figure still incorrect\n\nDear Advisor,\n\nThe draft is finished, and I can send it today. The figure for section 3 is still incorrect. I can correct that figure tomorrow.\n\nSincerely,",
+    "ship-build": "The release cannot proceed until the login test is green. Build 418 failed. The login test did not pass, but the API tests passed.",
+    "sam-text": "running late, grab a table if you get there first",
+    "gasket-email": "Subject: Tuesday delivery moving to Thursday\n\nHi Priya,\n\nYour Tuesday delivery has to move to Thursday because the gasket arrived damaged.\n\nPlease confirm that Thursday works.\n\nCasey",
+    "order-retry": "A timeout means no response arrived before the client stopped waiting. The order may already have been placed, so confirm it is absent before you send the request again. When the server deduplicates with an idempotency key, reuse that same key so the retry returns the original order. A connection reset means the peer aborted the TCP connection. If the reset happened while the connection was opening or the request was still being sent, the service did not receive a complete request, so you can retry. If it happened after the request was sent, or the logs do not show which, the order may already exist, so confirm or reuse that key before you try again.",
+    "assay-notebook": "Samples were stored at −20 °C. They were assayed within 48 hours.",
+    "toledo-error": "On 60 city blocks in Toledo, the model’s block-level error was higher than on the training city. The note says the sensor model differed between the two cities. The authors say they cannot tell whether the gap comes from the city or from the sensor. No other city was tested.",
+    "export-meeting": "The group decided to ship the export without PDF. Maya will fix the CSV escaping bug. It is still open whether legal needs to review the column list. Nobody has asked legal yet.",
+    "load-note-review": "On a clean call, `load_note` reads `/notes/{user_id}/{name}`, stores that string at `cache[name]`, and returns it.\n\n**Path segments are taken raw.** `user_id` and `name` are placed into that path as given. `open` normalizes `.` and `..`, so either value can leave `/notes/{user_id}/`. `load_note(\"alice\", \"../bob/secret\")` returns the contents of `/notes/bob/secret`. `load_note(\"alice\", \"../../etc/passwd\")` returns the contents of the file outside `/notes`. When that file cannot be read, the caller receives the exception from `open`. On Windows, a backslash is a separator too, so `\\` in either value leaves the directory the same way. A blank name, or `.`, resolves to the user directory. The caller receives the error `open` raises for a directory. `read()` asks for the whole stream, so a file that never reaches EOF never returns to the caller. The text from any of these reads is what gets stored at `cache[name]`.\n\nAccept only one path segment for `user_id` and one for `name`: a non-empty string other than `.` or `..`, containing neither `/` nor `\\`. Build the path from those segments.\n\n**The bytes are decoded with the locale.** `open(path)` is a text read, so it decodes with the process locale. The same file returns a different string when that locale differs. Bytes the locale cannot decode raise `UnicodeDecodeError`, and the caller receives that exception.\n\nPass the encoding the notes are stored in. If they are UTF-8, use `open(path, encoding=\"utf-8\")`.\n\n**The cache key is only the name.** `cache` is a shared mapping here, because the function assigns `cache[name]` and does not define it. `load_note(\"alice\", \"todo\")` returns Alice's text. `load_note(\"bob\", \"todo\")` returns Bob's text. The assignment that finishes last is the value in `cache[\"todo\"]`, so a later read of `cache[\"todo\"]` receives the other user's note. The file read finishes before the store, and nothing ties those steps together. The call that read earlier can store later, and a cache read then receives the older text. A cache read that arrives before the assignment still sees the previous entry. If `open` or `read` raises, this caller receives that exception. The assignment is skipped, so that previous entry remains.\n\nStore the text at `cache[user_id, name]`. When overlapping loads have to leave the newest read in the cache, hold one lock from the `open` through the assignment.\n\nThe snippet leaves two limits unresolved. The file object stays open until the interpreter drops it, and a successful `read` still returns the text. Use `with` when the descriptor must be released before the function returns. `open` follows symlinks, so a name that survives the segment check can still return the link target. Whether a note name is a link sits outside this function, so a test would still have to confirm it.",
+    "homepage-ticket": "Title: Homepage took about 4 seconds to load on my laptop this morning\n\nThe homepage took about 4 seconds to load on my laptop this morning.",
+    "hash-lookup": "Hash map lookup is called O(1) because the map hashes the key and uses that hash as an index into a bucket array. With a hash that spreads keys evenly, and with resizing that keeps the load factor bounded, the expected number of steps stays independent of how many entries are stored.\n\nThat expectation fails when keys pile into one bucket. Lookup then walks the collision chain, and the worst case is a scan of every entry, O(n). Some maps turn a long chain into a balanced tree, and then the worst case is O(log n).\n\nIt also fails when the table does not grow. Buckets lengthen as entries are added, so the expected cost grows with the number of entries.\n\nHashing the key and comparing it with the keys in the bucket both take time proportional to the key’s length. The O(1) claim assumes that cost stays bounded.",
+    "export-flag": "Leave the export feature flag off until legal reviews the column list. It already defaults to off, so leave that default in place. The export works in staging, and two customers have asked for it, which is why the review should happen before the flag changes."
+  },
+  "without_sayso": {
+    "dishwasher-film": "The white film is hard-water scale. Calcium and magnesium in the water dry onto the glasses, and a cheap pod is a small fixed dose with little or no rinse aid, so it often cannot keep that mineral load in suspension. On a cooler or eco cycle the pod may not even dissolve fully, which leaves both detergent residue and minerals on the glass.\n\nTry this first: wipe one cloudy glass with white vinegar. If the haze lifts, it is scale. Fill the rinse-aid dispenser, keep it topped up, and run a normal hot cycle with the pod in the dispenser. Rinse aid makes the water sheet off instead of drying as mineral-filled droplets, which is the change that usually stops new film fastest. Once a month, run an empty hot cycle with a cup of white vinegar in a bowl on the top rack to clear what is already on the glasses and inside the machine.\n\nIf vinegar does not touch the cloudiness, the glass is etched. That haze is in the surface itself, and no detergent change will remove it.",
+    "sister-text": "lena i can't do sunday. mom asked me to drive dad to the thing at 1. last time i tried to do that and see you the same day i was a jerk to everybody. can we do coffee monday after you drop the kids? i'll come to you",
+    "reschedule-interview": "Subject: Onsite moved to Friday at 1:30pm\n\nHi Jordan,\n\nI’m sorry for the change. We need to move your onsite from Thursday at 10:00 to Friday at 1:30pm because the Thursday panel has a conflict. It will be in the same office.\n\nPlease confirm that Friday at 1:30pm works for you.\n\nAlex Rivera\nEngineering Manager",
+    "norovirus-brief": "**Verified**\n\nThe city health department’s Tuesday bulletin reported 128 lab-confirmed norovirus cases in the county from Oct. 1 through Oct. 20 — 40 more than the same dates last year. The bulletin said most cases were linked to two long-term care facilities and did not name them. It did not include school absentee numbers. These notes include no hospitalization counts and no cause for the increase.\n\n**Statements, not confirmed by the department**\n\nDirector Helen Cho said, “We are not seeing spread in schools.”\n\nAt a county board meeting, a parent said three children in one classroom were home sick with stomach symptoms. The department has not confirmed that account.",
+    "actigraphy-abstract": "This study compared a wrist-worn actigraph with polysomnography in adults with insomnia. Forty-two participants (mean age 46 years, 25 women) spent one night in the laboratory. Sleep onset was defined as the first epoch of stage N2. The device estimated sleep onset 18 minutes later than polysomnography on average (SD 11 minutes). Total sleep time differed by 24 minutes (SD 19). These findings should not be generalized to people without insomnia or to nights recorded at home.",
+    "retry-after-docs": "```ts\n/**\n * Parses a `Retry-After` header into a delay in milliseconds.\n *\n * @param header - The header value, or `null` when it is absent.\n * @returns The delay in milliseconds, or `null` when the value cannot be used.\n *\n * - `null`, an empty string, or whitespace returns `null`.\n * - An integer number of seconds, such as `\"120\"`, returns that many milliseconds.\n * - An HTTP-date that parses returns the delay from now until that time, in milliseconds, never negative. A past date returns `0`.\n * - Anything else returns `null`.\n * - Values above 86400 seconds are capped at 86400 seconds before conversion to milliseconds.\n *\n * This function does not sleep and does not retry.\n */\nexport function parseRetryAfter(header: string | null): number | null\n```",
+    "password-reset-review": "SQL injection, a plaintext password, and a non-atomic reset are the issues that matter.\n\n- **SQL injection.** `token` and `newPassword` are interpolated into the query strings, and `row.user_id` is interpolated too. Any of them can change the statement. Use bound parameters.\n- **Password stored as given.** The update writes `newPassword` directly. Store a slow hash (argon2 or bcrypt). A database read is then the password itself.\n- **Not atomic, and the token never expires.** The select, update, and delete are separate statements with no transaction. A failure or crash after the update leaves the token reusable; two concurrent calls can both pass the select. Consume the token and change the password in one transaction, and reject expired tokens in that same statement.\n- **Failures are silent and can burn a valid token.** A missing row returns nothing, and query errors are ignored, so a failed update can still run the delete. If `db.query` returns a list, `!row` is wrong: an empty list is truthy, `row.user_id` is missing, and the token is deleted anyway.\n- **Token is stored and compared in plaintext.** A leak of `resets` is immediate account takeover. Store a hash of the token, keep a short expiry, and allow one use.",
+    "status-note": "Deploy rolled back; checkout is on the previous release. Payments are succeeding. Search still returns stale results; the fix is in the next deploy.",
+    "casual-message": "hey, it's been a while — wanna meet up sometime this week and catch up?",
+    "preserve-voice": "Been working on this for a while and I finally got something that actually works. Still a lot to fix, but I'm happy with where it's going.",
+    "professor-email": "Subject: Unable to attend today's meeting\n\nDear Professor,\n\nI’m sorry I can’t attend today’s meeting — I have a project meeting at the same time. I’ve kept up with the coursework, and I wanted to let you know in advance.\n\nWhen you have a chance, would you be willing to review my final project presentation?\n\nThank you,\n[Your Name]",
+    "precision-recall": "Precision and recall evaluate a binary classifier from different conditionings of the same counts. Let a positive prediction denote the class of interest. A true positive (TP) is a positive instance predicted positive, a false positive (FP) is a negative instance predicted positive, and a false negative (FN) is a positive instance predicted negative.\n\nPrecision is the proportion of predicted positives that are positive:\n\n\\[\n\\mathrm{Precision} = \\frac{\\mathrm{TP}}{\\mathrm{TP} + \\mathrm{FP}}\n\\]\n\nRecall is the proportion of actual positives that are predicted positive:\n\n\\[\n\\mathrm{Recall} = \\frac{\\mathrm{TP}}{\\mathrm{TP} + \\mathrm{FN}}\n\\]\n\nPrecision is undefined when the model predicts no positives, and recall is undefined when the evaluation set contains no positives. Precision falls as false positives increase; recall falls as false negatives increase. A model can therefore score highly on one measure while scoring poorly on the other.\n\nFor a model that outputs a score and applies a decision threshold, raising the threshold generally reduces the number of positive predictions. That change tends to remove false positives and so raise precision, while also converting some true positives into false negatives and so lowering recall. Lowering the threshold has the opposite tendency. The two measures therefore move in opposite directions under threshold adjustment when the score ranks instances imperfectly. The appropriate threshold depends on the relative cost of the two errors; neither measure alone identifies that cost.\n\nIn satellite flood detection, the positive class is a flooded location. A high-precision, low-recall detector flags relatively few locations, and most of those flags correspond to floodwater, but it leaves many flooded locations undetected. Response based only on its output would be directed toward confirmed flooding while omitting inundated areas. A high-recall, low-precision detector identifies most flooded locations, but many of its flags fall on dry land. Response based on its output would cover more of the flood while also committing resources to false alarms. The choice of threshold sets where the system sits between missed floods and false flood warnings.",
+    "project-advice": "Pick a problem that already has users, ship a narrow tool that solves one painful slice of it in public, and treat the repo like a product with a release cadence. Recruiters notice projects that look maintained, are easy to try, and show you can finish engineering work other people depend on.\n\n## Choose the project this week\n\nLook for a problem in one of these places, in this order:\n\n1. **A tool you already use daily that is annoying.** Course sites, lab workflows, Git, CI, local dev, PDF/assignment pipelines, hardware bring-up scripts, Discord bots your student org actually uses. If you hit the same friction three times, it is a candidate.\n2. **An existing open-source project with a painful gap, not a missing feature wishlist.** Search GitHub issues labeled `good first issue` is the wrong filter. Search for issues that say \"workaround,\" \"manual,\" \"we should automate,\" or PRs that keep getting closed because nobody owns the tool around the project.\n3. **A campus or student-org workflow with a real operator.** A lab manager, IEEE/ACM officer, hackathon organizer, or professor who currently does something in a spreadsheet or group chat. One operator who will use v1 is worth more than a hypothetical audience.\n\nReject ideas that need a new social network, a new language model, or \"a platform for students.\" Those stall because distribution is the product.\n\nWrite the idea as one sentence:\n\n> For [specific person], who currently [painful workflow], this tool [does one job] so they can [measurable outcome].\n\nIf you cannot name the person, do not start.\n\n## Constrain it so you can ship\n\nScope v1 to something you can install and demo in under five minutes. Examples that fit a computer engineering background and still read as software engineering:\n\n- A CLI that turns a course's repetitive lab checklist into reproducible scripts and a pass/fail report.\n- A small service that watches a hardware team's test logs and files a structured GitHub issue when a test starts failing, with the last known-good commit.\n- A GitHub Action that enforces something tedious and error-prone in embedded or student-org repos: changelog, license headers, board pinmux diffs, binary size budgets.\n- A local developer tool that fixes one sharp edge in a popular library you use, published as a documented CLI or library with tests.\n\nNon-goals matter. Write them in the README on day one. \"Does not support Windows yet\" is fine. \"Will eventually be a full LMS\" is how the project dies.\n\n## Make the repo look like a job, not a homework dump\n\nBefore you add features, put these in place:\n\n- **README with a 30-second demo.** GIF or asciinema, install command, example input, example output. A recruiter or engineer should understand the tool without cloning it.\n- **One-command install.** `brew`, `pipx`, `npx`, or a GitHub Action uses syntax. If setup takes more than one command, you will not get users.\n- **Tests on the core path, CI green on every push.** Even a small suite. Red CI is an instant skip.\n- **Issue and PR templates, a short CONTRIBUTING.md, and labels** (`bug`, `good first issue` only after the project works).\n- **Releases with tags and changelog notes** that say what changed for the user, not \"refactor.\"\n- **A license** (MIT or Apache-2.0) so companies can look at it.\n\nPin the architecture in a one-page `docs/design.md`: inputs, outputs, failure modes, what you deliberately did not build. That document is what a hiring manager actually reads.\n\n## Get one real user before you generalize\n\nDo this in the first two weeks, before you polish:\n\n1. Sit with the operator and watch them do the workflow once. Write down every manual step.\n2. Ship the smallest script that removes the worst step.\n3. Ask them to use it on the next real run. Fix only what blocked that run.\n4. After the third successful use, turn the script into the public project.\n\nA project with three real uses and a changelog beats a project with a landing page and zero users.\n\n## Publish where engineers already look\n\n- Post the demo in the specific community that has the problem: the library's Discord, a relevant subreddit, a student-org Slack, or the GitHub discussion of the upstream project. One precise post. No \"roast my project\" threads.\n- Open one high-quality PR to an upstream project if your tool sits next to it, or file an issue describing the gap with your tool as a concrete workaround.\n- Write two short technical posts (repo Discussions is enough) about a bug you hit: a race, a bad API assumption, a cross-platform failure. Those posts show judgment better than a feature list.\n\n## How this shows up in recruiting\n\nPut the project on your resume as a product line, not a class project:\n\n> Built and shipped [tool] used by [who] to [outcome]. [Language/stack]. CI, releases, N tests. [Link]\n\nIn interviews, be ready to walk through one production bug, one scope cut, and one design tradeoff. That is the signal. Stars are not.\n\nApply to internships and new-grad roles while the project is alive. Link the repo in the application and, when a company uses a related stack, mention the specific design doc or issue in a short note to the recruiter or in the \"additional information\" field. You are giving them something concrete to forward to an engineer.\n\n## 30-day plan\n\n| Week | Outcome |\n|---|---|\n| 1 | Pick the operator and the one job. Write the one-sentence spec and non-goals. Watch the workflow. |\n| 2 | Ugly script they actually run once. Then repo, license, README, CI, tests around that path. |\n| 3 | One-command install, demo, first tagged release. They use it on a second real run. You fix what broke. |\n| 4 | Design doc, changelog, one public post or upstream issue/PR. Resume line updated. Apply with the link. |\n\nStop when you are tempted to add a second product. The next step after v1 is reliability and one more real user, not a new idea.",
+    "process-thread": "A **process** is a running program with its own memory, open files, and other resources, isolated from other processes. A **thread** is a path of execution inside a process. Threads in the same process share that process’s memory and resources and run concurrently.\n\n| | Process | Thread |\n|---|---|---|\n| Memory | Own address space | Shares the process address space |\n| Resources | Own files, handles, and environment | Shares the process’s resources |\n| Creation | Heavier; the OS sets up a new address space | Lighter; mostly a new stack and registers |\n| Communication | Needs IPC (pipes, sockets, shared memory) | Can read and write the same memory directly |\n| Failure | A crash stays inside that process | A crash can take down the whole process |\n| Scheduling | The OS switches between processes | The OS (or a runtime) switches between threads; that switch is cheaper |\n\nA process always has at least one thread. Extra threads are how one program does several things at once without starting a separate process for each.",
+    "satellite-summary": "A model evaluated on 240 satellite image tiles from two regions achieved an F1 score of 0.87 in Region A and 0.71 in Region B. Region B had more cloud cover and a different distribution of flood events. The evaluation covered only these two regions, and no confidence intervals were calculated. The results suggest the model may perform differently across geographic settings, but further evaluation is needed to determine why.",
+    "get-user-review": "**1. HTTP errors are parsed and cached as users.**\n\n`fetch` only rejects on network failure. A 404 or 500 still runs `response.json()`, and that body is stored with `cache.set`. Later calls hit `if (cached)` and return the error payload forever (or until eviction), so a transient failure or a missing user sticks and is never retried. If the error body is not JSON, `response.json()` throws a `SyntaxError` and the status code is lost.\n\nCheck `response.ok` before parsing, and cache only after that:\n\n```ts\nconst response = await fetch(`/api/users/${encodeURIComponent(id)}`);\nif (!response.ok) {\n  throw new Error(`getUser failed: ${response.status}`);\n}\nconst user = await response.json();\ncache.set(id, user);\nreturn user;\n```\n\n**2. `id` is inserted into the path unencoded.**\n\n`/api/users/${id}` lets `/`, `?`, `#`, and `%` change the path or query. The response for that other URL is then stored under the original `id`, so callers get and keep the wrong resource.\n\n`encodeURIComponent(id)` is the smallest fix (shown above).",
+    "leave-unchanged-message": "hey, I pushed the fix. the issue was caused by the cache not being invalidated after an update. should be good now, but let me know if you can still reproduce it.",
+    "flood-paragraph": "The proposed pipeline estimates flood extent by generating a water segmentation mask from multispectral satellite imagery and comparing it with a reference layer that represents permanent water bodies. The comparison produces a difference mask in which pixels classified as water in the input imagery but absent from the reference layer are retained as candidate areas of newly detected water. The accuracy of the resulting estimate depends on the quality of the input imagery, the temporal alignment between the acquisition of that imagery and the reference layer, and the reliability of the underlying segmentation model.",
+    "editor-tools-rewrite": "Automated review now shows up inside many editors. A team should look at what the tool flags and what it never sees.",
+    "prototype-update": "the prototype works, but the interface still needs some work",
+    "lab-meeting-email": "Dear Professor,\n\nI will be unable to attend tomorrow’s lab meeting because of a scheduling conflict with my research group.\n\nI have finished the lab report and submitted it before the deadline.\n\nThank you for your understanding.\n\nSincerely,  \n[Your name]",
+    "precision-plain": "Precision measures the proportion of positive predictions that are correct, while recall measures the proportion of actual positive cases that the model identifies. Precision asks how often the model is right when it predicts a positive case. Recall asks how many of the real positive cases the model actually finds.",
+    "flood-cloud": "The model detected a larger flooded area in the post-event image. Cloud cover limited visibility in part of the scene, so the estimate may underrepresent the actual extent.",
+    "cache-before-status": "Check the HTTP status before caching a response, so a failed request is not stored and reused by later calls.",
+    "threshold-sentence": "Raising the decision threshold for the positive class leaves recall unchanged or lowers it whenever recall is defined, because the number of actual positives stays fixed while true positives cannot increase. Precision can rise, fall, stay the same, or become undefined if no positive predictions remain, since the predictions that drop out can be any mix of true positives and false positives.",
+    "formal-on-purpose": "Subject: Draft and Section 3 figure\n\nDear Professor,\n\nThe draft is complete. The figure for Section 3 is still incorrect. I can send the draft today and correct the figure tomorrow.\n\nSincerely,  \n[Your Name]",
+    "ship-build": "The release cannot proceed until the login test is green. Build 418 failed. The login test did not pass. The API tests passed.",
+    "sam-text": "running late, grab a table if you get there first",
+    "gasket-email": "Subject: Tuesday delivery moving to Thursday\n\nPriya,\n\nThe Tuesday delivery has to move to Thursday. The gasket arrived damaged, so we can’t keep the original date.\n\nPlease confirm Thursday works.\n\nCasey",
+    "order-retry": "A timeout means your client stopped waiting before a response arrived, so you cannot tell whether the order was placed. Retrying can create a duplicate unless the request is idempotent or you first confirm the order does not already exist. A connection reset means the connection was aborted before a normal response finished. If the request had already been sent, the outcome is just as unknown and the same caution applies. A reset before the request was fully sent is safer to retry, because the order was unlikely to have been placed.",
+    "assay-notebook": "Samples were stored at −20 °C and assayed within 48 hours.",
+    "toledo-error": "On 60 city blocks in Toledo, the model's block-level error was higher than on the training city. The sensor model differed between the two cities. The authors say they cannot tell whether the gap comes from the city or from the sensor. No other city was tested.",
+    "export-meeting": "**Decision:** Ship the export without PDF.\n\n**Owner:** Maya will fix the CSV escaping bug.\n\n**Open question:** Whether legal needs to review the column list. Nobody has asked legal yet.",
+    "load-note-review": "The function can return the wrong text, or raise, for reasons a caller cannot see from the arguments alone.\n\n- `user_id` and `name` are concatenated into the path with no checks. If either contains `/`, `\\`, or `..`, `open` reads a different file. The caller gets that file’s contents, or an error, instead of `/notes/<user_id>/<name>`.\n- The cache is keyed only by `name`. Loading the same name for another user overwrites the entry, so a later read of `cache[name]` returns the other user’s text.\n- `cache` is not defined here. If it is not already in scope, the caller gets `NameError` after the file is read and never receives `text`.\n- `open` uses the process locale encoding and turns on newline translation. The same file can come back as different characters, as `\\n`-normalized text, or as `UnicodeDecodeError`.",
+    "homepage-ticket": "**Title:** Homepage took about 4 seconds to load\n\n**Observed:** This morning, on a laptop, the homepage took about 4 seconds to load.",
+    "hash-lookup": "People call hash map lookup O(1) because a hash function maps a key to a bucket index in one step, and a table that resizes to keep its load factor bounded holds only a small, constant number of keys per bucket on average. Expected lookup time then stays flat as the map grows.\n\nThat stops being true when one bucket’s chain or probe sequence grows with the number of keys: a weak hash, keys chosen to collide, or a table that never resizes. It also fails when hashing the key itself is not constant-time (a long string costs time proportional to its length), and on the single insert that rebuilds the whole table. Average-case O(1) is an expectation under a decent hash and a bounded load factor, not a worst-case guarantee.",
+    "export-flag": "Keep the export feature flag off until Legal reviews the column list. It works in staging and two customers want it, but an unreviewed column list is enough reason to hold. After Legal signs off, turn it on for those two customers first."
+  }
+}

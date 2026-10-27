@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-27",
+  "model": "Grok 4.7, inherited by the session that ran the pair",
+  "settings": "not exposed",
+  "runs": 1,
+  "note": "One pass of the examples suite. The skill was read into one fresh session per prompt. The other session was told not to read the repository. This file is that pass, not a repeated result.",
+  "with_sayso": {
+    "editor-tools-rewrite": "Automated review now shows up inside many editors. A team should look at what the tool flags and what it never sees.",
+    "prototype-update": "the prototype works, but the interface still needs some work",
+    "lab-meeting-email": "Dear Professor,\n\nI will be unable to attend tomorrow's lab meeting due to a scheduling conflict with my research group. I have finished the lab report and submitted it before the deadline.",
+    "precision-plain": "Precision measures the proportion of positive predictions that are correct, while recall measures the proportion of actual positive cases that the model identifies. When the model predicts a positive case, precision is the share of those predictions that are right; when a case really is positive, recall is the share the model finds. One can be high while the other is low, because each proportion is taken over a different set of cases.",
+    "flood-cloud": "The model detected a larger flooded area in the post-event image. Because cloud cover limited visibility in part of the scene, the estimate may underrepresent the actual extent.",
+    "cache-before-status": "Check the HTTP status before caching a response, and do not cache one that failed. Caching an HTTP error may cause later calls to reuse that failed result.",
+    "threshold-sentence": "Raising the decision threshold for the positive class leaves recall the same or lower when recall is defined: it falls if at least one true positive is reclassified as negative and stays the same otherwise. Precision depends on which predicted positives fall below the new threshold and on whether any remain: it is undefined if none remain; otherwise it rises when the true-positive share of the removed predictions is lower than the previous precision, falls when that share is higher, and stays the same when that share is equal or no prediction is removed.",
+    "formal-on-purpose": "Subject: Draft complete; Section 3 figure still incorrect\n\nDear Advisor,\n\nThe draft is complete, but the figure for Section 3 is still incorrect. I can send the draft today and correct the figure tomorrow.\n\nSincerely,"
+  },
+  "without_sayso": {
+    "editor-tools-rewrite": "Automated review now shows up inside many editors. A team should look at what the tool flags and what it never sees.",
+    "prototype-update": "the prototype works, but the interface still needs some work",
+    "lab-meeting-email": "Dear Professor,\n\nI will be unable to attend tomorrow’s lab meeting because of a scheduling conflict with my research group.\n\nI have finished the lab report and submitted it before the deadline.\n\nThank you for your understanding.",
+    "precision-plain": "Precision measures the proportion of positive predictions that are correct, while recall measures the proportion of actual positive cases that the model identifies. Precision asks how often the model is right when it predicts a positive result, and recall asks how many of the real positive cases it successfully finds. A model can score high on one and low on the other, so both are needed to judge its performance.",
+    "flood-cloud": "The model detected a larger flooded area in the post-event image. Cloud cover limited visibility over part of the scene, so the estimate may underrepresent the actual extent.",
+    "cache-before-status": "Check the HTTP status before caching a response. Caching an error will make later calls reuse the failed result.",
+    "threshold-sentence": "Raising the decision threshold for the positive class leaves recall unchanged or lowers it, because an actual positive is counted only when its score still clears the cutoff, and a higher cutoff can only drop positives out. Precision can rise or fall with that same change, depending on whether the instances whose scores sit between the two thresholds are mainly false positives or mainly true positives.",
+    "formal-on-purpose": "Subject: Draft ready; figure correction tomorrow\n\nDear Professor,\n\nThe draft is complete, though the figure in Section 3 still needs correction. I can send the draft today and revise the figure tomorrow.\n\nBest regards,\n[Your Name]"
+  }
+}

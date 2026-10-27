@@ -1,0 +1,48 @@
+Suite: 37 cases, 18 with objective checks
+Fixtures: each weak answer failed at least one check, and each better answer passed.
+That only shows the checks can tell those hand-written answers apart.
+Model comparison: not provided. No model was called.
+----RUN----
+Suite: 37 cases, 18 with objective checks
+Fixtures: each weak answer failed at least one check, and each better answer passed.
+That only shows the checks can tell those hand-written answers apart.
+Run file: evals/runs/2026-10-27-full37.json
+Model: Grok 4.7, inherited by each fresh session. No finer version string was reported.; settings: not exposed. Temperature was not available.; runs: 1
+with_sayso editor-tools-rewrite: pass
+with_sayso prototype-update: pass
+with_sayso lab-meeting-email: pass
+with_sayso precision-plain: pass
+with_sayso flood-cloud: pass
+with_sayso cache-before-status: pass
+with_sayso formal-on-purpose: pass
+with_sayso ship-build: pass
+with_sayso sam-text: pass
+with_sayso gasket-email: pass
+with_sayso order-retry: pass
+with_sayso assay-notebook: pass
+with_sayso toledo-error: pass
+with_sayso export-meeting: pass
+with_sayso load-note-review: pass
+with_sayso homepage-ticket: pass
+with_sayso hash-lookup: pass
+with_sayso export-flag: pass
+without_sayso editor-tools-rewrite: pass
+without_sayso prototype-update: pass
+without_sayso lab-meeting-email: pass
+without_sayso precision-plain: pass
+without_sayso flood-cloud: pass
+without_sayso cache-before-status: pass
+without_sayso formal-on-purpose: pass
+without_sayso ship-build: pass
+without_sayso sam-text: pass
+without_sayso gasket-email: pass
+without_sayso order-retry: pass
+without_sayso assay-notebook: pass
+without_sayso toledo-error: pass
+without_sayso export-meeting: pass
+without_sayso load-note-review: fail (none of ['missing', 'not found', 'does not exist', 'FileNotFound', 'cannot be read'])
+without_sayso homepage-ticket: pass
+without_sayso hash-lookup: pass
+without_sayso export-flag: pass
+Objective checks failed. This is not a quality score.
+EXIT:1
