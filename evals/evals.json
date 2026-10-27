@@ -1,0 +1,549 @@
+{
+  "skill_name": "sayso",
+  "dimensions": [
+    "correctness",
+    "task_completion",
+    "voice",
+    "intervention",
+    "restraint"
+  ],
+  "grading": {
+    "assertion": "pass, fail, or unclear. Leave unclear out of totals.",
+    "dimension": "better, same, or worse for the Sayso output relative to the output without the skill.",
+    "significance": "Do not claim statistical significance from a small sample. A single win is not proof."
+  },
+  "evals": [
+    {
+      "id": 1,
+      "slug": "dishwasher-film",
+      "suite": "core",
+      "category": "explanation",
+      "dimensions": [
+        "task_completion",
+        "correctness",
+        "restraint"
+      ],
+      "prompt": "my dishwasher is leaving a white film on glasses. we have hard water and i use those cheap pods. what's going on, and what should i try first?",
+      "expected_output": "A direct explanation of the likely film, a way to tell removable mineral residue from permanent etching, and one first step before a long catalog of fixes.",
+      "constraints": [
+        "The person has hard water and uses inexpensive detergent pods.",
+        "The answer should be practical household advice, not a chemistry essay and not a product pitch."
+      ],
+      "failure_modes": [
+        "Opens with praise or restates the question as a heading.",
+        "Lists every possible cause at equal length and never says what to try first.",
+        "Drops the distinction between film that wipes off and glass etching that does not.",
+        "Turns the answer into jokes or fragments because the question was casual."
+      ],
+      "assertions": [
+        "The answer identifies hard-water mineral residue or detergent residue as a likely cause.",
+        "The answer distinguishes residue that can be wiped or dissolved from etching that cannot.",
+        "The answer names a first thing to try before listing further options.",
+        "The answer does not open by complimenting the question."
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "sister-text",
+      "suite": "core",
+      "category": "voice",
+      "dimensions": [
+        "voice",
+        "intervention"
+      ],
+      "prompt": "clean this up only where it's confusing. it's a text to my sister, keep it me:\n\nlena i can't do sunday. mom asked me to drive dad to the thing at 1 and last time i tried to do both i was a jerk to everybody. can we do coffee monday after you drop the kids? i'll come to you",
+      "expected_output": "The same text, or a light clarification, still addressed to Lena as a sister. Sunday, the 1 o'clock ride, Monday coffee after the school drop-off, and coming to Lena all remain. The voice stays informal.",
+      "constraints": [
+        "Recipient is the user's sister, Lena.",
+        "Edit only where the draft is confusing.",
+        "Preserve the user's voice."
+      ],
+      "failure_modes": [
+        "Rewrites it as a polite email with a greeting and a sign-off.",
+        "Removes the admission about being a jerk, which is voice rather than confusion.",
+        "Drops one of the logistics: Sunday, 1 o'clock, Monday, kids, or going to Lena.",
+        "Changes lowercase casual prose into business capitalization throughout."
+      ],
+      "assertions": [
+        "Lena, Sunday, Monday, the 1 o'clock commitment, coffee, the kids, and coming to Lena are all still there.",
+        "The message is still a text, without a subject line or formal sign-off.",
+        "The self-description about being a jerk is preserved.",
+        "No sentence starts with a stock courtesy such as 'I hope this message finds you well' or 'I wanted to reach out'."
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "reschedule-interview",
+      "suite": "core",
+      "category": "professional-email",
+      "dimensions": [
+        "voice",
+        "task_completion",
+        "correctness"
+      ],
+      "prompt": "Write to Jordan Chen, the candidate. I'm Alex Rivera, engineering manager. We need to move their onsite from Thursday 10:00 to Friday 1:30pm, same office, because the Thursday panel had a conflict. Ask them to confirm. Don't apologize more than once. Don't invent benefits or compliments about their interview.",
+      "expected_output": "A normally capitalized email from Alex Rivera that moves the onsite to Friday 1:30pm at the same office, gives the panel conflict as the reason, and asks Jordan Chen to confirm. No invented praise.",
+      "constraints": [
+        "Sender is Alex Rivera, engineering manager.",
+        "Recipient is Jordan Chen.",
+        "Old time is Thursday 10:00. New time is Friday 1:30pm. Same office.",
+        "Reason is a conflict on the Thursday panel.",
+        "At most one apology.",
+        "Do not invent compliments or benefits."
+      ],
+      "failure_modes": [
+        "Sounds like a text, or drops capitalization to seem natural.",
+        "Buries the new time under several sentences of welcome.",
+        "Adds praise for the candidate's earlier interview or invents travel, parking, or benefits.",
+        "Apologizes so many times that the request is unclear.",
+        "Leaves Thursday 10:00 looking like it might still happen."
+      ],
+      "assertions": [
+        "The email states Friday 1:30pm as the new time and that Thursday 10:00 no longer stands.",
+        "The email gives the Thursday panel conflict as the reason and says the office is the same.",
+        "The email asks Jordan Chen to confirm.",
+        "The sender is identified as Alex Rivera.",
+        "The email contains no compliment about Jordan's interview performance.",
+        "The email uses normal professional capitalization."
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "norovirus-brief",
+      "suite": "core",
+      "category": "factual-summary",
+      "dimensions": [
+        "correctness",
+        "task_completion"
+      ],
+      "prompt": "Write a short briefing for a newsroom editor. Use only these notes. Keep verified results separate from what people said.\n\nNotes:\n- The city health department's Tuesday bulletin said 128 lab-confirmed cases of norovirus were reported in the county from Oct 1 through Oct 20. The bulletin said this is 40 more cases than the same dates last year.\n- The bulletin said most cases were linked to two long-term care facilities. It did not name the facilities.\n- Director Helen Cho said, \"We are not seeing spread in schools.\" The bulletin did not include school absentee numbers.\n- A parent at a county board meeting said three children in one classroom were home sick with stomach symptoms. The department has not confirmed that account.\n- The notes do not include hospitalization counts or a cause for the increase.",
+      "expected_output": "A plain newsroom brief. The 128 cases, the dates, the increase of 40, and the two unnamed facilities stay attributed to the bulletin. Cho's school statement stays attributed to Cho, with the missing absentee numbers visible. The parent's account stays unconfirmed. No hospitalization count or cause is added.",
+      "constraints": [
+        "Use only the notes.",
+        "Do not name the facilities.",
+        "Do not add hospitalizations, a cause, or school absentee figures."
+      ],
+      "failure_modes": [
+        "States Cho's sentence as an established fact with no speaker.",
+        "Treats the parent's account as confirmed, or drops the lack of confirmation.",
+        "Invents a hospitalization number, a school name, or a cause.",
+        "Names the two facilities.",
+        "Rewrites the brief as a casual health tip."
+      ],
+      "assertions": [
+        "The brief includes 128 lab-confirmed cases, Oct 1 through Oct 20, and 40 more cases than the same dates last year, attributed to the bulletin.",
+        "The brief says most cases were linked to two long-term care facilities and does not name them.",
+        "Helen Cho's statement about schools is attributed to Helen Cho.",
+        "The brief says the bulletin included no school absentee numbers.",
+        "The parent's account of three children is attributed to the parent and described as unconfirmed.",
+        "The brief does not give a hospitalization count or a cause for the increase."
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "actigraphy-abstract",
+      "suite": "core",
+      "category": "scientific-editing",
+      "dimensions": [
+        "correctness",
+        "voice",
+        "intervention"
+      ],
+      "prompt": "Edit this abstract. Keep every number, definition, and limit. Keep it suitable for a journal.\n\nIn recent years, wearable devices have become increasingly popular, and it is important to note that they may help researchers measure sleep. In the present study, we aimed to compare a wrist-worn actigraph with polysomnography in adults with insomnia. Forty-two participants (mean age 46 years, 25 women) spent one night in the lab. Sleep onset was defined as the first epoch of stage N2. The device estimated sleep onset 18 minutes later than polysomnography on average (SD 11 minutes). Total sleep time differed by 24 minutes (SD 19). These findings should not be generalized to people without insomnia or to nights recorded at home. In conclusion, the device may be useful, but further research is needed to explore this exciting area.",
+      "expected_output": "A formal abstract that still contains the comparison, 42 participants, mean age 46, 25 women, one lab night, the N2 definition, the 18-minute onset difference with SD 11, the 24-minute total-sleep difference with SD 19, and both generalizability limits. Filler about popularity, excitement, and unspecified future research is gone.",
+      "constraints": [
+        "Journal register.",
+        "Do not drop or alter any number, the sleep-onset definition, or either limit."
+      ],
+      "failure_modes": [
+        "Turns the abstract into a blog explanation or a casual summary.",
+        "Drops the standard deviation, the sex count, the age, the N2 definition, or a limit in order to sound cleaner.",
+        "Adds a clinical recommendation the source did not make.",
+        "Keeps 'exciting' or an empty 'further research is needed' line."
+      ],
+      "assertions": [
+        "The result stays in formal scientific prose, without slang or a personal aside.",
+        "It keeps 42 participants, mean age 46 years, 25 women, and one night in the lab.",
+        "It keeps the definition of sleep onset as the first epoch of stage N2.",
+        "It keeps an 18-minute later sleep-onset estimate with SD 11 minutes, and a 24-minute total-sleep-time difference with SD 19.",
+        "It keeps both limits: not people without insomnia, and not home recording.",
+        "It does not say the area is exciting and does not add a new claim about future research."
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "retry-after-docs",
+      "suite": "core",
+      "category": "technical-documentation",
+      "dimensions": [
+        "correctness",
+        "task_completion"
+      ],
+      "prompt": "Document this for callers.\n\nexport function parseRetryAfter(header: string | null): number | null\n\nSpecified behavior:\n- null, an empty string, or whitespace returns null\n- An integer number of seconds, such as \"120\", returns that many milliseconds\n- An HTTP-date that parses returns the delay from now until that time, in milliseconds, never negative; a past date returns 0\n- Anything else returns null\n- Values above 86400 seconds are capped at 86400 seconds before conversion to milliseconds\n- The function does not sleep and does not retry\n\nDo not document behavior that is not in this list.",
+      "expected_output": "Caller-facing documentation of parseRetryAfter that states every specified rule, including the millisecond unit, the cap, past dates, and that the function does not sleep or retry. Unspecified behavior is absent.",
+      "constraints": [
+        "Document only the specified behavior.",
+        "The return value is milliseconds or null, not seconds."
+      ],
+      "failure_modes": [
+        "Documents delta-seconds syntax, jitter, multiple headers, or thrown errors that were not specified.",
+        "Says the function returns seconds.",
+        "Buries the contract in a tutorial about HTTP.",
+        "Drops the 86400 cap or the past-date rule.",
+        "Writes the contract as a casual paragraph with no way to scan the cases."
+      ],
+      "assertions": [
+        "The documentation says null, an empty string, and whitespace return null.",
+        "The documentation says an integer number of seconds is converted to milliseconds, with 120 as the example or an equivalent statement.",
+        "The documentation says a parseable HTTP-date returns a non-negative millisecond delay, and a past date returns 0.",
+        "The documentation says other values return null.",
+        "The documentation says values above 86400 seconds are capped at 86400 seconds before conversion to milliseconds.",
+        "The documentation says the function does not sleep and does not retry.",
+        "The documentation does not invent delta syntax, jitter, or exceptions."
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "password-reset-review",
+      "suite": "core",
+      "category": "code-review",
+      "dimensions": [
+        "correctness",
+        "task_completion",
+        "restraint"
+      ],
+      "prompt": "Review this function. I want the problems that matter.\n\nfunction resetPassword(token, newPassword) {\n  const row = db.query(`SELECT * FROM resets WHERE token = '${token}'`);\n  if (!row) return;\n  db.query(`UPDATE users SET password = '${newPassword}' WHERE id = ${row.user_id}`);\n  db.query(`DELETE FROM resets WHERE token = '${token}'`);\n}",
+      "expected_output": "A review that leads with the exploitable defects: SQL injection through the token and password, the password being written as submitted, and the reset row being trusted without an expiry or single-use check beyond deletion after the write. Style comments are absent or clearly secondary.",
+      "constraints": [
+        "Review the function shown. Do not invent a surrounding framework.",
+        "The user asked for the problems that matter, not a rewritten file."
+      ],
+      "failure_modes": [
+        "Opens with praise and spends the review on naming.",
+        "Misses the string-built SQL.",
+        "Misses that the password is stored as submitted.",
+        "Rewrites the function unprompted and skips the explanation.",
+        "Lists dozens of speculative issues at the same urgency as the injection."
+      ],
+      "assertions": [
+        "The review identifies SQL injection from interpolating token or newPassword into the query.",
+        "The review identifies that the password is written without hashing or another stated protection.",
+        "The review identifies that a found token is accepted with no visible expiry, purpose, or single-use check before the password write.",
+        "The first substantive point is a correctness or security defect, not a compliment or a style note.",
+        "The review does not replace the function with a full rewrite as the answer."
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "status-note",
+      "suite": "core",
+      "category": "leave-unchanged",
+      "dimensions": [
+        "intervention",
+        "restraint"
+      ],
+      "prompt": "Tighten this status note:\n\nThe deploy is rolled back. Checkout is on the previous release. Payments are succeeding. Search is still returning stale results, and that fix is in the next deploy.",
+      "expected_output": "The same note, or a change so small that every fact remains and no advice is added. The note is already tight.",
+      "constraints": [
+        "Facts to preserve: rollback, checkout on the previous release, payments succeeding, search still stale, fix scheduled for the next deploy."
+      ],
+      "failure_modes": [
+        "Rewrites a finished note into an incident template.",
+        "Adds a cause, an owner, a timeline, or a next step the user did not state.",
+        "Softens 'stale results' into vaguer language.",
+        "Adds a cheerful opener or a closing offer to help."
+      ],
+      "assertions": [
+        "The output preserves the rollback, the previous release, payments succeeding, stale search results, and the next deploy.",
+        "The output adds no cause, owner, timestamp, or recommended action.",
+        "The output is not meaningfully longer than the original note.",
+        "The output does not wrap the note in praise or a summary of what was changed."
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "casual-message",
+      "suite": "judgment",
+      "category": "voice",
+      "dimensions": [
+        "voice",
+        "intervention"
+      ],
+      "prompt": "rewrite this so it sounds like something i'd actually send to a friend. keep it casual and don't make it sound like a linkedin post:\n\n\"Hello, I wanted to reach out and see if you would be interested in meeting up sometime this week. It has been a while since we last spoke, and I think it would be nice to catch up.\"",
+      "expected_output": "A casual message a person might send a friend about meeting this week and catching up. It does not read as a formal outreach note.",
+      "constraints": [
+        "Keep the plan to meet sometime this week and the reason that it has been a while.",
+        "Do not turn it into a professional invitation."
+      ],
+      "failure_modes": [
+        "Keeps the LinkedIn register: 'reach out', 'I wanted to', 'I would be interested'.",
+        "Rewrites the voice into a different person's slang than the request supports, or into polished marketing copy."
+      ],
+      "assertions": [
+        "The message proposes meeting sometime this week.",
+        "The message keeps the idea that it has been a while and that catching up would be welcome.",
+        "The message does not use 'reach out', 'I wanted to', or 'to whom it may concern'.",
+        "The message is not written as a formal email with a subject line."
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "preserve-voice",
+      "suite": "judgment",
+      "category": "voice",
+      "dimensions": [
+        "voice",
+        "intervention",
+        "correctness"
+      ],
+      "prompt": "fix the grammar but keep my voice. don't make it sound more professional than it is:\n\n\"been working on this for a while and i finally got something that actually works. still a lot to fix but i'm happy with where its going\"",
+      "expected_output": "The same lowercase, first-person note, with the grammar that is actually wrong fixed and the rest of the wording left in place.",
+      "constraints": [
+        "Keep the writer's lowercase voice.",
+        "Do not make the note more professional than the draft."
+      ],
+      "failure_modes": [
+        "Capitalizes the sentences and expands fragments into 'I have been' or 'I am'.",
+        "Rewrites the content instead of fixing grammar.",
+        "Leaves 'its' where 'it's' is required, or 'fixes' grammar that was not wrong by changing the voice."
+      ],
+      "assertions": [
+        "The note stays lowercase and still opens with 'been working'. It does not become 'I've been working' or another capitalized rewrite.",
+        "The draft's 'its' is corrected to mean 'it is', either as it's or as it is.",
+        "The note still says the work took a while, that something now works, that a lot remains to fix, and that the writer is happy with where it is going.",
+        "No sentence is rewritten into a more formal or more enthusiastic claim."
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "professor-email",
+      "suite": "judgment",
+      "category": "professional-email",
+      "dimensions": [
+        "voice",
+        "task_completion",
+        "correctness"
+      ],
+      "prompt": "write an email to my professor explaining that i can't attend today's meeting because i have a project meeting at the same time. mention that i've kept up with the coursework and ask if they could review my final project presentation when they have time. keep it respectful, concise, and natural.",
+      "expected_output": "A short, normally capitalized email that gives the conflict, says the coursework is caught up, and asks for a review of the final project presentation when the professor has time.",
+      "constraints": [
+        "The reason is a project meeting at the same time as today's meeting.",
+        "Do not invent the professor's name, the course name, or a history with the class."
+      ],
+      "failure_modes": [
+        "Uses lowercase or chat phrasing in a message to a professor.",
+        "Omits the coursework update or the review request.",
+        "Invents a professor name, course number, or apology for falling behind."
+      ],
+      "assertions": [
+        "The email says the sender cannot attend today's meeting because of a project meeting at the same time.",
+        "The email says the sender has kept up with the coursework.",
+        "The email asks the professor to review the final project presentation when they have time.",
+        "The email uses normal professional capitalization.",
+        "The email does not invent the professor's name or a course number."
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "precision-recall",
+      "suite": "judgment",
+      "category": "technical-explanation",
+      "dimensions": [
+        "correctness",
+        "task_completion",
+        "restraint"
+      ],
+      "prompt": "explain the difference between precision and recall in machine learning for a university report. include the formulas, explain the trade-off, and give an example involving satellite flood detection. use formal academic language, but don't add filler or make unsupported claims.",
+      "expected_output": "A formal explanation of precision and recall, with formulas, the threshold trade-off including the fact that precision is not guaranteed to rise as the threshold rises, and a satellite flood-detection example that does not present invented counts as measurements.",
+      "constraints": [
+        "University report register.",
+        "No unsupported claims.",
+        "The example has to involve satellite flood detection."
+      ],
+      "failure_modes": [
+        "Says that raising a threshold typically increases precision, without saying that precision is not guaranteed to move that way.",
+        "Presents invented pixel counts or scores as if they were measured results.",
+        "Drops a formula, the trade-off, or the flood example in order to stay short.",
+        "Drops into casual explainer prose."
+      ],
+      "assertions": [
+        "The answer gives precision as TP / (TP + FP) and recall as TP / (TP + FN), or an equivalent formula.",
+        "The answer explains recall falling as a positive-class threshold is raised, for a score-based classifier.",
+        "If the answer says that raising the threshold increases precision, it also says this is not guaranteed: precision can fall when true positives drop out in greater proportion than false positives, or an equivalent exception. An unqualified claim that raising the threshold typically increases precision fails this check.",
+        "The answer includes a satellite flood-detection example in which flooded is the positive class, a false positive is unflooded ground labeled flooded, and a false negative is flooded ground missed.",
+        "Any numeric counts in that example are explicitly hypothetical or assumed. They are not presented as results from a study.",
+        "The answer stays in formal academic prose."
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "project-advice",
+      "suite": "judgment",
+      "category": "advice",
+      "dimensions": [
+        "correctness",
+        "task_completion",
+        "restraint"
+      ],
+      "prompt": "i'm a computer engineering student and i want to build an open-source project that could help me get noticed by software engineering recruiters. i'm tired of building random projects that never go anywhere. what should i do next? give me practical advice, not generic tips like \"network more\" or \"build something you're passionate about.\"",
+      "expected_output": "Practical next steps for finishing or contributing to something a recruiter can inspect. No invented personal facts, course numbers, or adoption claims.",
+      "constraints": [
+        "The person is a computer engineering student.",
+        "Advice has to be practical. The prompt rejects generic networking and passion advice."
+      ],
+      "failure_modes": [
+        "Answers with 'network more' or 'build something you're passionate about' as the substance.",
+        "Invents a course number, a tool the person already shipped, or a resume fact about adoption.",
+        "Gives only motivational framing and no next action."
+      ],
+      "assertions": [
+        "The answer gives concrete next actions, such as choosing from existing work, scoping a small tool, or contributing a fix upstream.",
+        "The answer does not use 'network more' or 'build something you're passionate about' as the advice.",
+        "The answer does not invent a course number, a product name presented as the student's project, or a claim that a course or employer already adopted the work.",
+        "If the answer includes a sample resume bullet, the bullet is labeled as a template or as usable only after the facts are true. An answer with no resume bullet passes."
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "process-thread",
+      "suite": "judgment",
+      "category": "explanation",
+      "dimensions": [
+        "task_completion",
+        "correctness",
+        "restraint"
+      ],
+      "prompt": "what's the difference between a process and a thread?",
+      "expected_output": "A direct explanation of the difference. Long enough to be accurate, short of a tutorial.",
+      "constraints": [
+        "Answer the question that was asked."
+      ],
+      "failure_modes": [
+        "Turns the answer into a multi-section article with history, code samples, and interview tips.",
+        "Confuses the ownership of memory: a thread does not get the process's isolation."
+      ],
+      "assertions": [
+        "The answer says a process has its own memory or address space.",
+        "The answer says a thread is a sequence of execution inside a process, and that threads in one process share that process's memory.",
+        "The answer does not organize itself as a tutorial with three or more headed sections."
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "satellite-summary",
+      "suite": "judgment",
+      "category": "factual-summary",
+      "dimensions": [
+        "correctness",
+        "task_completion",
+        "restraint"
+      ],
+      "prompt": "summarize this for a technical audience in 3-5 sentences. preserve the main finding, the limitation, and the uncertainty. don't add conclusions that aren't supported by the text:\n\n\"A model was evaluated on 240 satellite image tiles collected from two regions. It achieved an F1 score of 0.87 in Region A and 0.71 in Region B. Region B contained more cloud cover and a different distribution of flood events. The evaluation did not include any locations outside these two regions, and no confidence intervals were calculated. The results suggest the model may perform differently across geographic settings, but further evaluation is needed to determine why.\"",
+      "expected_output": "Three to five sentences for a technical reader. The F1 scores, the two-region limit, the missing confidence intervals, and the stated uncertainty all survive. No new cause is added.",
+      "constraints": [
+        "Use only the paragraph.",
+        "3–5 sentences."
+      ],
+      "failure_modes": [
+        "Drops a score, the cloud or flood-distribution difference, the geographic limit, or the missing confidence intervals.",
+        "Explains why Region B scored lower as if that cause had been established.",
+        "Adds a recommendation or a next experiment the paragraph does not contain."
+      ],
+      "assertions": [
+        "The summary is 3 to 5 sentences.",
+        "It keeps 240 tiles, an F1 of 0.87 in Region A, and an F1 of 0.71 in Region B.",
+        "It keeps that Region B had more cloud cover and a different distribution of flood events, without stating that either one caused the score difference.",
+        "It keeps both limits: evaluation only in these two regions, and no confidence intervals.",
+        "It keeps the uncertainty that the model may perform differently across geographic settings and that further evaluation is needed to determine why.",
+        "It adds no cause, recommendation, or conclusion absent from the paragraph."
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "get-user-review",
+      "suite": "judgment",
+      "category": "code-review",
+      "dimensions": [
+        "correctness",
+        "task_completion",
+        "restraint"
+      ],
+      "prompt": "review this TypeScript function. identify actual bugs first, explain their impact, and suggest the smallest reasonable fix. don't invent problems or spend time on stylistic preferences.\n\n```ts\nasync function getUser(id: string) {\n  const cached = cache.get(id);\n  if (cached) return cached;\n\n  const response = await fetch(`/api/users/${id}`);\n  const user = await response.json();\n\n  cache.set(id, user);\n  return user;\n}\n```",
+      "expected_output": "A review that reports the cached HTTP error, the unescaped id, and the overlapping in-flight requests, each with its impact and a small fix. No style review.",
+      "constraints": [
+        "Review the function shown.",
+        "Do not invent problems the control flow does not allow.",
+        "Prefer the smallest reasonable fix for each real bug rather than a redesign."
+      ],
+      "failure_modes": [
+        "Spends the review on naming, types, or formatting.",
+        "Reports the cached error response and the unescaped id, then stops before the overlapping requests.",
+        "Invents a bug that requires a cache API or server behavior the snippet does not show."
+      ],
+      "assertions": [
+        "The review says an HTTP error status still resolves from fetch, and that parsing and caching that body makes a later call return the error as a user.",
+        "The review says id is interpolated into the URL without encoding, so characters such as /, ?, or # can change the request, with the cache key still the raw id.",
+        "The review says two overlapping calls for the same id can both miss the cache before either write, so both call fetch. Missing this fails the check, even if the other two bugs are present.",
+        "Each reported bug has an impact and a fix aimed at that bug, rather than only a rewritten function with no explanation.",
+        "The review does not spend itself on stylistic preferences such as naming or formatting."
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "leave-unchanged-message",
+      "suite": "judgment",
+      "category": "leave-unchanged",
+      "dimensions": [
+        "intervention",
+        "voice",
+        "restraint"
+      ],
+      "prompt": "check this message for grammar and clarity. only change something if it genuinely needs fixing. preserve the wording otherwise:\n\n\"hey, i pushed the fix. the issue was caused by the cache not being invalidated after an update. should be good now, but let me know if you can still reproduce it.\"",
+      "expected_output": "The message returned as written. It is already grammatical and clear.",
+      "constraints": [
+        "Change the message only if something genuinely needs fixing.",
+        "Preserve the wording otherwise."
+      ],
+      "failure_modes": [
+        "Capitalizes the message or expands it into complete formal sentences.",
+        "Rewrites a clear status note for tone."
+      ],
+      "assertions": [
+        "The output preserves the lowercase wording of the original message.",
+        "The output does not capitalize 'hey', 'the', or 'should'.",
+        "The output still says the fix was pushed, the cache was not invalidated after an update, and the reader should say if they can still reproduce it.",
+        "The output does not add a greeting, a sign-off, or an explanation of what was edited."
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "flood-paragraph",
+      "suite": "judgment",
+      "category": "scientific-editing",
+      "dimensions": [
+        "voice",
+        "intervention",
+        "correctness"
+      ],
+      "prompt": "improve this paragraph for a scientific report. preserve its technical detail and formal tone. do not simplify it for a general audience or shorten it just for the sake of brevity:\n\n\"The proposed pipeline performs flood extent estimation by generating a water segmentation mask from multispectral satellite imagery and comparing it with a reference layer representing permanent water bodies. The resulting difference mask identifies candidate areas of newly detected water. However, the accuracy of this estimate depends on image quality, temporal alignment between the input imagery and the reference layer, and the reliability of the underlying segmentation model.\"",
+      "expected_output": "A formal scientific paragraph that still describes the mask, the permanent-water reference, the difference mask, and the three accuracy dependencies.",
+      "constraints": [
+        "Keep the technical detail and the formal tone.",
+        "Do not simplify for a general audience.",
+        "Do not shorten only for brevity."
+      ],
+      "failure_modes": [
+        "Rewrites the paragraph as a casual explanation.",
+        "Drops one of the three dependencies: image quality, temporal alignment, or the segmentation model.",
+        "Removes the caveat in order to sound more confident."
+      ],
+      "assertions": [
+        "The paragraph stays in formal scientific prose.",
+        "It still generates a water segmentation mask from multispectral satellite imagery and compares it with a reference layer of permanent water bodies.",
+        "It still says the difference mask identifies candidate areas of newly detected water.",
+        "It still says accuracy depends on image quality, temporal alignment between the imagery and the reference layer, and the reliability of the segmentation model.",
+        "It does not add a measured accuracy, a dataset, or a cause the paragraph did not state."
+      ]
+    }
+  ]
+}
