@@ -2,7 +2,7 @@
 
 Read this when documenting an API, command, configuration, or other interface.
 
-The standard is that a caller can use the thing correctly without reading its implementation.
+The job is that a caller with the error in front of them can find what the interface does and what they must not assume. They should not need the implementation.
 
 - Document the behavior you were given. If something is unspecified, say so or leave it out. Do not invent retries, units, defaults, or error types.
 - Lead with what it does, then the inputs, the outputs, the edge cases, and a short example when an example makes the contract easier to apply.

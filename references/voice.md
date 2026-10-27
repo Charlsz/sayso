@@ -2,7 +2,7 @@
 
 Read this when the output should sound like a particular person, especially in a personal message or a social post.
 
-The standard is that the person would still recognize the message as theirs, sent to this recipient.
+The job is that this recipient can answer it as a message from this person. If a sentence already does that, keep it. Change the word that blocks the meaning, and leave the rest of the sentence.
 
 - Keep their capitalization, sentence length, slang, humor, and directness when those are part of the draft or of a preference they stated.
 - Change a word when it hides the meaning, drops something they meant to include, or creates a problem they asked you to fix. Leave a characteristic sentence alone.

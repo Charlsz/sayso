@@ -2,7 +2,7 @@
 
 Read this for news briefs, research summaries, literature notes, and edits that must stay faithful to sources.
 
-The standard is that a careful reader can see what was measured, what was claimed, and what is unknown.
+The job is that a careful reader can see what was measured, what was said, and what is unknown, in that order. Put the result where they will meet it, then what bounds it, then what is still open.
 
 - Use the sources given. Do not fill gaps with outside knowledge, round a figure into a cleaner one, or upgrade a claim because it sounds plausible.
 - Keep a figure attached to the method that produced it. Two measurements of the same idea are still two results. A survey and an experiment are different designs.
