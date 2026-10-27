@@ -4,7 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>sayso</title>
-  <meta name="description" content="Sayso helps an agent decide what a task needs before writing. One comparison of 37 prompts did not show that it improves answers overall.">
+  <meta name="description" content="Sayso helps an agent decide what a task needs before writing. In Cursor, type /sayso. A 37-prompt comparison was mixed, not proof it is better.">
+  <meta property="og:title" content="sayso">
+  <meta property="og:description" content="A skill that decides what the reader needs. In Cursor, type /sayso.">
+  <meta property="og:url" content="https://charlsz.github.io/sayso/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="sayso">
+  <meta name="twitter:description" content="A skill that decides what the reader needs. In Cursor, type /sayso.">
   <meta name="theme-color" content="#FDFDFC">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -15,6 +22,7 @@
     <header>
       <a class="mark" href="./">sayso</a>
       <nav>
+        <a href="#install">Install</a>
         <a href="https://github.com/Charlsz/sayso">GitHub</a>
       </nav>
     </header>
@@ -27,19 +35,13 @@
         <li>explain it like i'm 3</li>
       </ul>
       <p class="after">so i made a skill that decides what the reader needs.</p>
+      <p class="os"><a href="#install">In Cursor, type <code>/sayso</code></a>. In Codex, type <code>$</code>.</p>
       <p class="explain">Sayso, an <a href="https://agentskills.io/specification">agent skill</a>, helps an agent decide what a task actually needs before writing. A message to a friend, a formal email, a technical explanation, and a code review all need different things. It considers the reader, the purpose, and what a good result requires. Sometimes that means rewriting. Sometimes it means keeping the original. A shorter answer isn't automatically better, and a more polished one isn't automatically right.</p>
 
       <div class="examples" id="examples">
         <section class="case">
-          <h2>What the comparison showed</h2>
-          <p class="what">I compared Sayso and the same model without it across 37 prompts. Each condition ran once per prompt, in a fresh session.</p>
-          <p class="what">The results were mixed. Sayso preserved some original wording, avoided a few unsupported additions, and caught a concurrency issue the other answer missed. It also produced explanations that were longer than requested and occasionally added meaning that wasn't in the source.</p>
-          <p class="what">This is an early comparison, not proof that Sayso improves answers overall. The <a href="https://github.com/Charlsz/sayso">repository</a> contains the evaluation cases and results.</p>
-        </section>
-
-        <section class="case">
           <h2>An explanation that was supposed to be brief</h2>
-          <p class="what">The prompt asked for brief. Sayso’s answer is more detailed than that. This pair is from an earlier session of this prompt, not from the 37-case run. That run did not repeat every prompt.</p>
+          <p class="what">The prompt asked for brief. Sayso’s answer is more detailed than that. This pair is from an earlier try of this prompt. The 37-prompt comparison ran each prompt once.</p>
           <div class="shot">
             <p class="role">you</p>
             <p class="bubble">Explain to a teammate, briefly, why people say hash map lookup is O(1), and when that description stops being true.</p>
@@ -64,7 +66,7 @@ That stops being true in the worst case. If many keys land in the same bucket, a
 
         <section class="case">
           <h2>A ticket that had to stay a ticket</h2>
-          <p class="what">Sayso kept “my laptop.” The other answer widened it to a laptop. This pair is from an earlier session of this prompt, not from the 37-case run.</p>
+          <p class="what">Sayso kept “my laptop.” The other answer widened it to a laptop. This pair is from an earlier try of this prompt, not a second pass of all 37.</p>
           <div class="shot">
             <p class="role">you</p>
             <p class="bubble">Turn this into a bug ticket. Keep it to what was observed.
@@ -85,6 +87,13 @@ Observed: The homepage took about 4 seconds to load on a laptop this morning.</p
               </div>
             </div>
           </div>
+        </section>
+
+        <section class="case">
+          <h2>What the comparison showed</h2>
+          <p class="what">I compared Sayso and the same model without it across 37 prompts. Each condition ran once per prompt, in a fresh session.</p>
+          <p class="what">The results were mixed. Sayso preserved some original wording, avoided a few unsupported additions, and caught a concurrency issue the other answer missed. It also produced explanations that were longer than requested and occasionally added meaning that wasn't in the source.</p>
+          <p class="what">This is an early comparison, not proof that Sayso improves answers overall. The <a href="https://github.com/Charlsz/sayso">repository</a> contains the evaluation cases and results.</p>
         </section>
       </div>
 

@@ -99,6 +99,11 @@ header {
   text-decoration: none;
 }
 
+header nav {
+  display: flex;
+  gap: 18px;
+}
+
 header nav a {
   font-size: 15px;
 }
