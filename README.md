@@ -4,41 +4,25 @@ Sayso is an open-source [Agent Skill](https://agentskills.io/specification) for 
 
 ## Install
 
-Paste one line. It adds a folder named `sayso` and nothing else. No settings, no Python, no Node, no API key.
-
-Cursor, Codex, and OpenCode read `~/.agents/skills/` on every local project.
-
-macOS and Linux:
-
 ```bash
-mkdir -p ~/.agents/skills && git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso
+npx skills add Charlsz/sayso
 ```
 
-Windows, in PowerShell:
+That is the [skills CLI](https://github.com/vercel-labs/skills). Skill repositories on [skills.sh](https://skills.sh) install the same way. In a terminal it asks which agents to include. Cursor, Claude Code, Codex, and OpenCode are on that list, and the CLI picks the folder for each one you select. Run it in a project, or add `-g` for every project on this computer. It needs Node.js 22.20 or later.
 
-```powershell
-mkdir "$HOME\.agents\skills"; git clone https://github.com/Charlsz/sayso.git "$HOME\.agents\skills\sayso"
-```
-
-Claude Code reads `~/.claude/skills/` instead. Change `.agents` to `.claude` in that line.
-
-For one project, run it from that project's root and change `~/.agents/skills` to `.agents/skills`. On Windows, change `$HOME\.agents\skills` to `.agents\skills`. Commit the folder if teammates should get it. In a project, Claude Code reads `.claude/skills/sayso/`.
-
-The last folder has to be named `sayso`, with `SKILL.md` directly inside it. Cloning the repository somewhere else does not install the skill. These paths come from each product's docs as of October 27, 2026. They were not click-tested inside each app.
+Then start a new chat.
 
 ### Turn it on
 
-Start a new chat after installing. The usual miss is a folder named something other than `sayso`, or `SKILL.md` nested one level too deep (`sayso/sayso/SKILL.md`).
-
 #### Cursor
 
-[Cursor](https://cursor.com/docs/skills) is the editor with Agent chat. The clone above is on every local project. In a new Agent chat, type `/sayso` and choose Sayso. That attaches it to one message. Option+Enter on a Mac, or Alt+Enter on Windows, keeps it on for the session as a Custom Mode. Cursor can also apply it when the task matches the description.
+[Cursor](https://cursor.com/docs/skills) is the editor with Agent chat. In a new Agent chat, type `/sayso` and choose Sayso. That attaches it to one message. Option+Enter on a Mac, or Alt+Enter on Windows, keeps it on for the session as a Custom Mode. Cursor can also apply it when the task matches the description.
 
-A copy in `~/.agents/skills/` stays on your machine. Cursor does not copy that folder to Cloud Agents, remote SSH sessions, or self-hosted workers. For a Cloud Agent, commit the skill in the repository at `.agents/skills/sayso/` or `.cursor/skills/sayso/`. Skills in `~/.cursor/skills/` can be synced for Cloud Agents you start yourself: Settings → Agents → Context and Tools → Sync Skills for Cloud Agents. That sync does not include `~/.agents/skills/`, and automation runs do not load the synced copy.
+A global install stays on your machine. Cursor does not copy `~/.agents/skills/` to Cloud Agents, remote SSH sessions, or self-hosted workers. For a Cloud Agent, commit `.agents/skills/sayso/` in the repository. Skills in `~/.cursor/skills/` can be synced for Cloud Agents you start yourself: Settings → Agents → Context and Tools → Sync Skills for Cloud Agents. That sync does not include `~/.agents/skills/`, and automation runs do not load the synced copy.
 
 #### Claude Code
 
-[Claude Code](https://code.claude.com/docs/en/skills) is Anthropic's coding agent in the terminal and the desktop app. It does not read `~/.agents/skills/`. Type `/sayso`, or ask for the work and Claude can load the skill when the description matches. Claude Code notices a skill added under `~/.claude/skills/` during the current session. If that folder did not exist when the session started, run `/reload-skills`.
+[Claude Code](https://code.claude.com/docs/en/skills) is Anthropic's coding agent in the terminal and the desktop app. Type `/sayso`, or ask for the work and Claude can load the skill when the description matches. Claude Code notices a new skill during the current session. If the skills folder did not exist when the session started, run `/reload-skills`.
 
 Claude on the web, and Cowork cloud sessions, do not read `~/.claude/skills/` on your machine. Those sessions use the skills enabled on your claude.ai account.
 
@@ -48,7 +32,7 @@ Claude on the web, and Cowork cloud sessions, do not read `~/.claude/skills/` on
 
 #### OpenCode
 
-[OpenCode](https://opencode.ai/docs/skills/) is the open-source coding agent. It reads the same `~/.agents/skills/sayso` folder as Cursor and Codex. Type `@sayso` to load it, or ask normally and OpenCode can load it when the description matches. Start a new session after installing.
+[OpenCode](https://opencode.ai/docs/skills/) is the open-source coding agent. Type `@sayso` to load it, or ask normally and OpenCode can load it when the description matches. Start a new session after installing.
 
 ## Use it
 

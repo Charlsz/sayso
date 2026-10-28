@@ -38,12 +38,8 @@
 
       <section class="install" id="install">
         <h2>Install</h2>
-        <p>One line. It adds a <code>sayso</code> folder. Cursor, Codex, and OpenCode read it. Nothing else changes.</p>
-        <p class="os">macOS and Linux</p>
-        <pre><code>mkdir -p ~/.agents/skills &amp;&amp; git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso</code></pre>
-        <p class="os">Windows, in PowerShell</p>
-        <pre><code>mkdir "$HOME\.agents\skills"; git clone https://github.com/Charlsz/sayso.git "$HOME\.agents\skills\sayso"</code></pre>
-        <p>Claude Code reads <code>~/.claude/skills</code> instead. Change <code>.agents</code> to <code>.claude</code>, then start a new chat.</p>
+        <pre><code>npx skills add Charlsz/sayso</code></pre>
+        <p>In a terminal it asks which agents to include. Cursor, Claude Code, Codex, and OpenCode are on that list. Add <code>-g</code> for every project on this computer, then start a new chat.</p>
       </section>
 
       <section class="agents" id="agents">
@@ -55,7 +51,7 @@
           </section>
           <section>
             <h3><a href="https://code.claude.com/docs/en/skills">Claude Code</a></h3>
-            <p>Anthropic’s coding agent, in the terminal and the desktop app. Type <code>/sayso</code>, or just ask. If Claude doesn’t see it, run <code>/reload-skills</code>. The web app does not read this folder.</p>
+            <p>Anthropic’s coding agent, in the terminal and the desktop app. Type <code>/sayso</code>, or just ask. If Claude doesn’t see it, run <code>/reload-skills</code>. The web app uses the skills on your claude.ai account.</p>
           </section>
           <section>
             <h3><a href="https://developers.openai.com/codex/skills">Codex</a></h3>
