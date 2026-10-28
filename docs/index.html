@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>sayso</title>
-  <meta name="description" content="Sayso helps an agent decide what a task needs before writing. In Cursor, type /sayso. A 37-prompt comparison was mixed, not proof it is better.">
+  <meta name="description" content="Install Sayso, then type /sayso in Cursor or Claude Code, $sayso in Codex, or @sayso in OpenCode. The 37-prompt comparison was mixed.">
   <meta property="og:title" content="sayso">
-  <meta property="og:description" content="A skill that decides what the reader needs. In Cursor, type /sayso.">
+  <meta property="og:description" content="Install it, then type /sayso in Cursor or Claude Code, $sayso in Codex, or @sayso in OpenCode.">
   <meta property="og:url" content="https://charlsz.github.io/sayso/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="sayso">
-  <meta name="twitter:description" content="A skill that decides what the reader needs. In Cursor, type /sayso.">
+  <meta name="twitter:description" content="Install it, then type /sayso in Cursor or Claude Code, $sayso in Codex, or @sayso in OpenCode.">
   <meta name="theme-color" content="#FDFDFC">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#examples">Skip to examples</a>
+  <a class="skip" href="#install">Skip to install</a>
   <div class="wrap">
     <header>
       <a class="mark" href="./">sayso</a>
@@ -35,8 +35,43 @@
         <li>explain it like i'm 3</li>
       </ul>
       <p class="after">so i made a skill that decides what the reader needs.</p>
-      <p class="os"><a href="#install">In Cursor, type <code>/sayso</code></a>. In Codex, type <code>$</code>.</p>
-      <p class="explain">Sayso, an <a href="https://agentskills.io/specification">agent skill</a>, helps an agent decide what a task actually needs before writing. A message to a friend, a formal email, a technical explanation, and a code review all need different things. It considers the reader, the purpose, and what a good result requires. Sometimes that means rewriting. Sometimes it means keeping the original. A shorter answer isn't automatically better, and a more polished one isn't automatically right.</p>
+
+      <section class="install" id="install">
+        <h2>Install</h2>
+        <p>One line. It adds a <code>sayso</code> folder. Cursor, Codex, and OpenCode read it. Nothing else changes.</p>
+        <p class="os">macOS and Linux</p>
+        <pre><code>mkdir -p ~/.agents/skills &amp;&amp; git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso</code></pre>
+        <p class="os">Windows, in PowerShell</p>
+        <pre><code>mkdir "$HOME\.agents\skills"; git clone https://github.com/Charlsz/sayso.git "$HOME\.agents\skills\sayso"</code></pre>
+        <p>Claude Code reads <code>~/.claude/skills</code> instead. Change <code>.agents</code> to <code>.claude</code>, then start a new chat.</p>
+      </section>
+
+      <section class="agents" id="agents">
+        <h2>Turn it on</h2>
+        <div class="grid">
+          <section>
+            <h3><a href="https://cursor.com/docs/skills">Cursor</a></h3>
+            <p>The editor. In a new Agent chat, type <code>/sayso</code>. That uses it for one message. Option+Enter on a Mac, or Alt+Enter on Windows, keeps it on for the session.</p>
+          </section>
+          <section>
+            <h3><a href="https://code.claude.com/docs/en/skills">Claude Code</a></h3>
+            <p>Anthropic’s coding agent, in the terminal and the desktop app. Type <code>/sayso</code>, or just ask. If Claude doesn’t see it, run <code>/reload-skills</code>. The web app does not read this folder.</p>
+          </section>
+          <section>
+            <h3><a href="https://developers.openai.com/codex/skills">Codex</a></h3>
+            <p>OpenAI’s coding agent. In the CLI or the IDE extension, type <code>$sayso</code>. In the ChatGPT desktop app, type <code>@</code> and choose Sayso.</p>
+          </section>
+          <section>
+            <h3><a href="https://opencode.ai/docs/skills/">OpenCode</a></h3>
+            <p>The open-source coding agent. It reads the same folder as Cursor and Codex. Type <code>@sayso</code>, or just ask. Start a new session after installing.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <h2>What it does</h2>
+        <p>Sayso, an <a href="https://agentskills.io/specification">agent skill</a>, helps an agent decide what a task actually needs before writing. A message to a friend, a formal email, a technical explanation, and a code review all need different things. It considers the reader, the purpose, and what a good result requires. Sometimes that means rewriting. Sometimes it means keeping the original. A shorter answer isn't automatically better, and a more polished one isn't automatically right.</p>
+      </section>
 
       <div class="examples" id="examples">
         <section class="case">
@@ -97,17 +132,6 @@ Observed: The homepage took about 4 seconds to load on a laptop this morning.</p
         </section>
       </div>
 
-      <section class="install" id="install">
-        <h2>Install</h2>
-        <p>The skill is this repository. The last folder in the path has to be named <code>sayso</code>, with <code>SKILL.md</code> directly inside it. Then start a new chat. In Cursor, type <code>/sayso</code>. In Codex, type <code>$</code> or run <code>/skills</code>.</p>
-        <p class="os">Windows, in PowerShell</p>
-        <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills" | Out-Null
-git clone https://github.com/Charlsz/sayso.git "$env:USERPROFILE\.agents\skills\sayso"</code></pre>
-        <p class="os">macOS and Linux</p>
-        <pre><code>mkdir -p ~/.agents/skills
-git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso</code></pre>
-        <p>The rest of the steps, including a project-only install, are in the <a href="https://github.com/Charlsz/sayso#install">README</a>.</p>
-      </section>
     </main>
 
     <footer>

@@ -1,94 +1,70 @@
 # Sayso
 
-Sayso is an open-source [Agent Skill](https://agentskills.io/specification) that helps a model decide what the reader needs to be able to do or know, then write to that.
-
-The audience and the task set the standard. A text, a professional email, a scientific note, a technical explanation, and a code review do not share one. Formal, technical, and scientific writing stay that way when the task calls for them. Someone's own words stay theirs. A draft that already does the job should be left alone. Casual, lowercase, and short are not the aim.
-
-The instructions also keep facts, limits, uncertainty, attribution, and technical precision. Those safeguards matter. They do not by themselves make an explanation clearer or a review more complete. A correct answer can still hide the point, and a review that holds back can still miss a bug.
-
-Sayso is not a model. It does not detect or remove "AI writing," and it does not guarantee a better answer. The comparisons in [`evals/`](evals/README.md) are where that claim would have to come from. The ones from October 27, 2026 did not show a consistent improvement.
-
-Instructions can change a result. They cannot guarantee a correct answer, and they do not remove the limits of the model underneath.
-
-You do not need Python, Node, or an API key to use the skill. The evaluation check below uses Python's standard library.
+Sayso is an open-source [Agent Skill](https://agentskills.io/specification) for Cursor, Claude Code, Codex, and OpenCode. It helps the model decide what the reader needs to be able to do or know, then write to that. It does not guarantee a better answer. The October 27, 2026 comparison did not show a consistent improvement.
 
 ## Install
 
-The skill is this folder. The folder has to be named `sayso`, and `SKILL.md` has to sit directly inside it. Your agent loads skills from its own skills folder. Cloning this repository, or opening it in an editor, does not install the skill.
+Paste one line. It adds a folder named `sayso` and nothing else. No settings, no Python, no Node, no API key.
 
-These steps come from [Cursor's skills docs](https://cursor.com/docs/skills) and the [Codex skills docs](https://developers.openai.com/codex/skills). They were not click-tested inside each app.
-
-### On your computer (Cursor and Codex)
-
-This puts Sayso on every local project for both Cursor and Codex.
-
-Windows, in PowerShell:
-
-```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills" | Out-Null
-git clone https://github.com/Charlsz/sayso.git "$env:USERPROFILE\.agents\skills\sayso"
-```
+Cursor, Codex, and OpenCode read `~/.agents/skills/` on every local project.
 
 macOS and Linux:
 
 ```bash
-mkdir -p ~/.agents/skills
-git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso
+mkdir -p ~/.agents/skills && git clone https://github.com/Charlsz/sayso.git ~/.agents/skills/sayso
 ```
 
-If you already have the files, copy them instead of cloning. Run this from your copy of the repo, not from inside the skills folder. The folder you run it in is the one that contains `SKILL.md`:
+Windows, in PowerShell:
 
 ```powershell
-$dest = "$env:USERPROFILE\.agents\skills\sayso"
-New-Item -ItemType Directory -Force -Path $dest | Out-Null
-Copy-Item -Recurse -Force .\* $dest
+mkdir "$HOME\.agents\skills"; git clone https://github.com/Charlsz/sayso.git "$HOME\.agents\skills\sayso"
 ```
 
-```bash
-mkdir -p ~/.agents/skills/sayso
-cp -R . ~/.agents/skills/sayso
-```
+Claude Code reads `~/.claude/skills/` instead. Change `.agents` to `.claude` in that line.
 
-The last folder in the path still has to be named `sayso`.
+For one project, run it from that project's root and change `~/.agents/skills` to `.agents/skills`. On Windows, change `$HOME\.agents\skills` to `.agents\skills`. Commit the folder if teammates should get it. In a project, Claude Code reads `.claude/skills/sayso/`.
 
-Check that this file exists:
+The last folder has to be named `sayso`, with `SKILL.md` directly inside it. Cloning the repository somewhere else does not install the skill. These paths come from each product's docs as of October 27, 2026. They were not click-tested inside each app.
 
-- Windows: `%USERPROFILE%\.agents\skills\sayso\SKILL.md`
-- macOS and Linux: `~/.agents/skills/sayso/SKILL.md`
+### Turn it on
 
-Then start a **new** chat.
+Start a new chat after installing. The usual miss is a folder named something other than `sayso`, or `SKILL.md` nested one level too deep (`sayso/sayso/SKILL.md`).
 
-- In Cursor, type `/sayso` and choose Sayso. That attaches it to one message. Option+Enter on a Mac, or Alt+Enter on Windows, keeps it on for the session as a Custom Mode.
-- In Codex CLI or the IDE extension, type `$` or run `/skills` and choose Sayso. Codex can also select it when the task matches the description.
+#### Cursor
 
-Codex picks up a newly copied skill on its own. If it does not appear, restart Codex. The usual miss is a folder named something other than `sayso`, or `SKILL.md` nested one level too deep (`sayso/sayso/SKILL.md`).
+[Cursor](https://cursor.com/docs/skills) is the editor with Agent chat. The clone above is on every local project. In a new Agent chat, type `/sayso` and choose Sayso. That attaches it to one message. Option+Enter on a Mac, or Alt+Enter on Windows, keeps it on for the session as a Custom Mode. Cursor can also apply it when the task matches the description.
 
-### For one project only
+A copy in `~/.agents/skills/` stays on your machine. Cursor does not copy that folder to Cloud Agents, remote SSH sessions, or self-hosted workers. For a Cloud Agent, commit the skill in the repository at `.agents/skills/sayso/` or `.cursor/skills/sayso/`. Skills in `~/.cursor/skills/` can be synced for Cloud Agents you start yourself: Settings → Agents → Context and Tools → Sync Skills for Cloud Agents. That sync does not include `~/.agents/skills/`, and automation runs do not load the synced copy.
 
-From that project's root:
+#### Claude Code
 
-```bash
-mkdir -p .agents/skills
-git clone https://github.com/Charlsz/sayso.git .agents/skills/sayso
-```
+[Claude Code](https://code.claude.com/docs/en/skills) is Anthropic's coding agent in the terminal and the desktop app. It does not read `~/.agents/skills/`. Type `/sayso`, or ask for the work and Claude can load the skill when the description matches. Claude Code notices a skill added under `~/.claude/skills/` during the current session. If that folder did not exist when the session started, run `/reload-skills`.
 
-Commit `.agents/skills/sayso` if teammates should get the same skill from the repo. Cursor also reads `.cursor/skills/sayso/` in a project. Either location works for Cursor. Codex reads `.agents/skills/`.
+Claude on the web, and Cowork cloud sessions, do not read `~/.claude/skills/` on your machine. Those sessions use the skills enabled on your claude.ai account.
 
-### Cursor Cloud Agents
+#### Codex
 
-A copy in `~/.agents/skills/` stays on your machine. Cursor's docs say it does not copy that folder to Cloud Agents, remote SSH sessions, or self-hosted workers. For a Cloud Agent, commit the skill in the repository at `.agents/skills/sayso/` or `.cursor/skills/sayso/`. Skills in `~/.cursor/skills/` can be synced for Cloud Agents you start yourself: Settings → Agents → Context and Tools → Sync Skills for Cloud Agents. That sync does not include `~/.agents/skills/`, and the same docs say automation runs do not load the synced copy.
+[Codex](https://developers.openai.com/codex/skills) is OpenAI's coding agent in the CLI, the IDE extension, and the ChatGPT desktop app. In the CLI or the IDE extension, type `$sayso`, or run `/skills` and choose Sayso. In the ChatGPT desktop app, type `@` and choose Sayso. Codex can also select it when the task matches the description. It picks up a newly copied skill on its own. If it does not appear, restart Codex.
 
-### Other agents
+#### OpenCode
 
-Any agent that supports the Agent Skills format can use this folder. Put it where that agent looks for skills, and keep the folder name `sayso`. Check that agent's own docs for the path. A path that is not listed above has not been verified for Sayso.
+[OpenCode](https://opencode.ai/docs/skills/) is the open-source coding agent. It reads the same `~/.agents/skills/sayso` folder as Cursor and Codex. Type `@sayso` to load it, or ask normally and OpenCode can load it when the description matches. Start a new session after installing.
 
 ## Use it
 
 Ask for the work the way you normally would: an explanation, a rewrite, an email, a summary, documentation, or a review. You can also invoke Sayso first, then ask.
 
-The answer should not mention Sayso or walk through a checklist. In Cursor, Option+Enter on a Mac, or Alt+Enter on Windows, keeps the selected skill on for the session as a Custom Mode.
+The answer should not mention Sayso or walk through a checklist.
 
 If an edit comes back colder, shorter, or more casual than the task deserves, that is a miss. So is a rewrite of a draft that was already doing its job, a technical claim stated more strongly than it holds, or a review that stops before a consequential bug.
+
+## What it does
+
+The audience and the task set the standard. A text, a professional email, a scientific note, a technical explanation, and a code review do not share one. Formal, technical, and scientific writing stay that way when the task calls for them. Someone's own words stay theirs. A draft that already does the job should be left alone. Casual, lowercase, and short are not the aim.
+
+The instructions also keep facts, limits, uncertainty, attribution, and technical precision. Those safeguards matter. They do not by themselves make an explanation clearer or a review more complete. A correct answer can still hide the point, and a review that holds back can still miss a bug.
+
+Sayso is not a model. It does not detect or remove "AI writing." Instructions can change a result. They cannot guarantee a correct answer, and they do not remove the limits of the model underneath. The comparisons in [`evals/`](evals/README.md) are where a "better answer" claim would have to come from.
 
 ## What's in the folder
 
@@ -117,7 +93,7 @@ Check the suite, and the hand-written weak and better fixtures, with:
 python evals/check_suite.py
 ```
 
-That command does not call a model. The fixtures show that the objective checks can tell those written answers apart. They are not a Sayso result. [`evals/runs/2026-10-27-examples.json`](evals/runs/2026-10-27-examples.json) is one pass of the eight `examples` prompts, from before the skill was rewritten around the reader's job. Score it with `python evals/check_suite.py evals/runs/2026-10-27-examples.json`. On that day the checker passed 14 answers and failed both threshold answers, because those answers explained the exception without using the phrases the check looks for. That phrase list was later removed. Re-scoring the file does not replay the exit code. Read [`evals/runs/2026-10-27-examples.md`](evals/runs/2026-10-27-examples.md). Several answers were the same either way, and the threshold explanation written with the skill was harder to read.
+That command uses Python's standard library. It does not call a model. The fixtures show that the objective checks can tell those written answers apart. They are not a Sayso result. [`evals/runs/2026-10-27-examples.json`](evals/runs/2026-10-27-examples.json) is one pass of the eight `examples` prompts, from before the skill was rewritten around the reader's job. Score it with `python evals/check_suite.py evals/runs/2026-10-27-examples.json`. On that day the checker passed 14 answers and failed both threshold answers, because those answers explained the exception without using the phrases the check looks for. That phrase list was later removed. Re-scoring the file does not replay the exit code. Read [`evals/runs/2026-10-27-examples.md`](evals/runs/2026-10-27-examples.md). Several answers were the same either way, and the threshold explanation written with the skill was harder to read.
 
 [`evals/runs/2026-10-27-use.json`](evals/runs/2026-10-27-use.json) is one later pass of the eleven `use` prompts, after that rewrite. [`evals/runs/2026-10-27-use-trial2.json`](evals/runs/2026-10-27-use-trial2.json) repeats three of them. Read [`evals/runs/2026-10-27-use.md`](evals/runs/2026-10-27-use.md) before treating either file as a result. Most pairs were similarly usable. The hash explanation was longer with the skill both times it was tried. The first code review with the skill omitted a missing-file failure that the other review reported, and a second trial did not repeat that split. The first text-to-Sam session without the skill did not return the message; the second trial returned it unchanged on both sides. The checker exits 1 on both saved files. Part of the first exit was a phrase check, later corrected, and part of it was those disagreements. One file is not a repeated result.
 
