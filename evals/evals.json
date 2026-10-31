@@ -1152,7 +1152,7 @@
         {"op": "includes", "text": "legal"},
         {"op": "includes", "text": "staging"},
         {"op": "one_of", "options": ["two customer", "2 customer"]},
-        {"op": "one_of", "options": ["leave the flag off", "leave it off", "keep the flag off", "keep it off", "stay off", "do not enable", "don't enable", "do not turn", "don't turn", "until legal", "wait for legal"]}
+        {"op": "one_of", "options": ["leave the flag off", "leave the export flag off", "leave the export feature flag off", "leave it off", "keep the flag off", "keep the export flag off", "keep the export feature flag off", "keep it off", "stay off", "do not enable", "don't enable", "do not turn", "don't turn", "until legal", "wait for legal"]}
       ]
     }
   ]
