@@ -1,0 +1,7 @@
+.agents/
+.claude/
+skills-lock.json
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
