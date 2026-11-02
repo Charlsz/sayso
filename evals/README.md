@@ -108,6 +108,8 @@ The calibration left in `SKILL.md` is a text that should be returned unchanged a
 
 [`reports/2026-10-27-full37-summary.md`](reports/2026-10-27-full37-summary.md) is one later pass of all 37 cases. Each condition ran once, in a fresh session, with Sayso loaded by reading `SKILL.md`. It did not show a consistent improvement. The answers are in [`runs/2026-10-27-full37.json`](runs/2026-10-27-full37.json).
 
+[`runs/2026-10-28-adhd.md`](runs/2026-10-28-adhd.md) is a separate one-pass comparison of no skill, Sayso, and [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd). The answers are in [`runs/2026-10-28-adhd.json`](runs/2026-10-28-adhd.json). On prompts that asked what to do next, the ADHD skill's numbered steps matched the job. On a finished message, a lowercase voice note, and a review with a third bug, Sayso stayed closer to the job those prompts set. That file is an illustration, not a ranking. The checker scores only `with_sayso` and `without_sayso` for slugs that already have objective checks; it does not grade `with_adhd`.
+
 ## What is not here
 
 There is no leaderboard and no claim that a model improved by a measured amount. The script does not grade naturalness, and it does not replace reading both answers.
