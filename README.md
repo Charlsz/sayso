@@ -83,6 +83,8 @@ That command uses Python's standard library. It does not call a model. The fixtu
 
 [`evals/reports/2026-10-27-full37-summary.md`](evals/reports/2026-10-27-full37-summary.md) is one pass of all 37 prompts, one fresh session per condition. Sayso was loaded by reading the skill file. It did not show a consistent improvement. The answers are in [`evals/runs/2026-10-27-full37.json`](evals/runs/2026-10-27-full37.json).
 
+[`evals/runs/2026-10-28-adhd.md`](evals/runs/2026-10-28-adhd.md) is one later pass of eleven prompts under no skill, Sayso, and an ADHD output-style skill. It is an illustration of where those jobs differ, not a ranking. The answers are in [`evals/runs/2026-10-28-adhd.json`](evals/runs/2026-10-28-adhd.json).
+
 To run a comparison in Cursor:
 
 1. Start a new chat, invoke `/sayso`, and paste one `prompt` from `evals/evals.json`.
