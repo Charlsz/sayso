@@ -197,13 +197,6 @@ h1 {
   font-size: 16px;
 }
 
-.meta {
-  max-width: 40rem;
-  margin: 18px 0 0;
-  color: var(--line);
-  font-size: 15px;
-}
-
 .examples {
   margin-top: 56px;
 }
@@ -271,19 +264,6 @@ h1 {
   white-space: pre-wrap;
   font-size: 16px;
   line-height: 1.5;
-}
-
-.results {
-  margin: 28px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.results li {
-  max-width: 40rem;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  font-size: 16px;
 }
 
 pre {
