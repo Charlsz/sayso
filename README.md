@@ -8,7 +8,7 @@ Sayso is an open-source [Agent Skill](https://agentskills.io/specification) for 
 npx skills add Charlsz/sayso
 ```
 
-That is the [skills CLI](https://github.com/vercel-labs/skills). Skill repositories on [skills.sh](https://skills.sh) install the same way. In a terminal it asks which agents to include. Cursor, Claude Code, Codex, and OpenCode are on that list, and the CLI picks the folder for each one you select. Run it in a project, or add `-g` for every project on this computer. It needs Node.js 22.20 or later.
+That is the [skills CLI](https://github.com/vercel-labs/skills). This skill is listed on [skills.sh](https://www.skills.sh/charlsz/sayso). In a terminal it asks which agents to include. Cursor, Claude Code, Codex, and OpenCode are on that list, and the CLI picks the folder for each one you select. Run it in a project, or add `-g` for every project on this computer. It needs Node.js 22.20 or later.
 
 Then start a new chat.
 
