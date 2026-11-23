@@ -1,6 +1,7 @@
 .agents/
 .claude/
 .cursor/
+.opencode/
 skills-lock.json
 __pycache__/
 *.pyc
